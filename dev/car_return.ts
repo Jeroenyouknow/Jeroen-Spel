@@ -1,4 +1,4 @@
-class Car{
+class Car_return{
         //Color
           color:number;
          //Position
@@ -10,15 +10,11 @@ class Car{
     constructor() {
         this.color = Math.random() * 360;
         
-        this.div = document.createElement("car");
+        this.div = document.createElement("car_return");
         document.body.appendChild(this.div);
-         this.div.addEventListener("click", function() {
-             let audio = new Audio('../docs/audio/Car_horn.mp3');
-            audio.play();
-             console.log("Vroem Vroem");});
-
-        var x = 1 * window.innerWidth ;
-        var y = 0.70 * window.innerHeight;
+         this.div.addEventListener("click", function() {let audio = new Audio('../docs/audio/Car_horn.mp3');audio.play();console.log("Vroem Vroem");});
+        var x = -0.1 * window.innerWidth ;
+        var y = 0.5 * window.innerHeight;
         
         this.move(x,y);
 

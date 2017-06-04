@@ -29,7 +29,19 @@ car {
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
 
-    animation: cardrive 10s linear infinite;
+    animation: cardrive 4s linear infinite;
+}
+
+car_return {
+    background-image: url(../images/car_return.png);
+    width: 300px;
+    height: 300px;
+    
+     /*kleur variatie met css */
+    -webkit-filter: hue-rotate(90deg);
+    filter: hue-rotate(90deg);
+
+    animation: cardrive_return 3s linear infinite;
 }
 
 @keyframes cardrive {
@@ -39,5 +51,15 @@ car {
   
   100% {
     transform: translateX(-150vw);
+  }
+}
+
+@keyframes cardrive_return {
+  0% {
+    transform: translateX(-10vw);
+  }
+  
+  100% {
+    transform: translateX(150vw);
   }
 }
