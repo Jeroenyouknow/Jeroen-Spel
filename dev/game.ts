@@ -1,13 +1,23 @@
 /// <reference path="car.ts"/>
 
 class Game {
-     
+
+     private road :Array<Road>;
+
     constructor() {
-        let car : Car = new Car();
-        let car_return : Car_return = new Car_return(); 
-        let trump : Trump = new Trump();
-        let book : Book = new Book(); 
-        let twitter : Twitter = new Twitter();  
-    }     
+        
+        this.road = new Array<Road>();
+        
+        for(let i = 0; i < 11; i++){
+            this.Gameloop(i);    
+        }
+    }  
+
+    private Gameloop(i: number){
+        i = i/10;
+        this.road.push(new Road(i));
+        let car = new Car(0.55,1,document.createElement("car")); 
+        let car_return = new Car(0.51,0,document.createElement("car_return"));
+    }   
 } 
 
