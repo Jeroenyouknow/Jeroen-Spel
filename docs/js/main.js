@@ -5,7 +5,9 @@ var Car = (function () {
         document.body.appendChild(this.div);
         this.div.addEventListener("click", function () {
             var audio = new Audio('../docs/audio/Car_horn.mp3');
+            var audio_1 = new Audio('../audio/Car_horn.mp3');
             audio.play();
+            audio_1.play();
             console.log("Vroem Vroem");
         });
         var x = 1 * window.innerWidth;
