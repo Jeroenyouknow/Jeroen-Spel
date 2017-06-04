@@ -20,6 +20,12 @@ background {
   background-size: cover;
 }
 
+trump {
+    background-image: url(../images/trump.png);
+    width: 35%;
+    height: 30%;
+}
+
 car {
     background-image: url(../images/car.png);
     width: 300px;
@@ -59,4 +65,20 @@ car_return {
   100% {
     transform: translateX(150vw);
   }
+}
+
+
+
+book{
+   background-image: url(../images/book.png);
+    width: 30%;
+    height: 15%;
+
+}
+
+twitter{
+   background-image: url(../images/twitter.png);
+    width: 20%;
+    height: 15%;
+
 }
