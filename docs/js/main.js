@@ -51,8 +51,6 @@ var Game = (function () {
         var car = new Car();
         var car_return = new Car_return();
     }
-    Game.prototype.gameLoop = function () {
-    };
     return Game;
 }());
 window.addEventListener("load", function () {
