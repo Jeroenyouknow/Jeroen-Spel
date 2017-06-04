@@ -42,8 +42,6 @@ var Car = (function () {
         this.div.style.left = this.x + "px";
         this.div.style.top = this.y + "px";
     };
-    Car.prototype.speak = function () {
-    };
     return Car;
 }());
 var Game = (function () {

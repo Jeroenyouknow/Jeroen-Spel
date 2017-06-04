@@ -2,10 +2,9 @@
 
 class Game {
      
-   private constructor() {
+    constructor() {
         let car : Car = new Car();
-        let car_return : Car_return = new Car_return();     
-    }
-        
+        let car_return : Car_return = new Car_return();    
+    }     
 } 
 

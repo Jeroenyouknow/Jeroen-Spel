@@ -31,7 +31,6 @@ car {
 
     animation: cardrive 4s linear infinite;
 }
-
 car_return {
     background-image: url(../images/car_return.png);
     width: 300px;
@@ -43,7 +42,6 @@ car_return {
 
     animation: cardrive_return 3s linear infinite;
 }
-
 @keyframes cardrive {
   0% {
     transform: translateX(10vw);
@@ -53,7 +51,6 @@ car_return {
     transform: translateX(-150vw);
   }
 }
-
 @keyframes cardrive_return {
   0% {
     transform: translateX(-10vw);
@@ -62,4 +59,3 @@ car_return {
   100% {
     transform: translateX(150vw);
   }
-}
