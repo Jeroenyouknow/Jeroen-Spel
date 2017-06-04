@@ -21,7 +21,6 @@ var Car = (function () {
         this.div.style.top = this.y + "px";
     };
     Car.prototype.speak = function () {
-        console.log("Vroem Vroem");
     };
     return Car;
 }());
