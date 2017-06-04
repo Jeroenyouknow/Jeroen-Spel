@@ -14,9 +14,7 @@ class Car{
         document.body.appendChild(this.div);
          this.div.addEventListener("click", function() {
              let audio = new Audio('../docs/audio/Car_horn.mp3');
-             let audio_1 = new Audio('../audio/Car_horn.mp3');
             audio.play();
-            audio_1.play();
              console.log("Vroem Vroem");});
 
         var x = 1 * window.innerWidth ;
