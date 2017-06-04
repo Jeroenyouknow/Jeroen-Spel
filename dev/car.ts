@@ -1,11 +1,6 @@
 class Car {
     //Color
     color: number;
-    //Position
-    x: number;
-    y: number;
-    //Div
-   
 
     constructor(a: number, b: number, div: HTMLElement) {
         this.color = Math.random() * 360;
@@ -26,10 +21,10 @@ class Car {
     }
 
     move(x: number, y: number, div: HTMLElement) {
-        this.x = x;
-        this.y = y;
+        x = x;
+        y = y;
 
-        div.style.left = this.x + "px";
-        div.style.top = this.y + "px";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
     }
 }

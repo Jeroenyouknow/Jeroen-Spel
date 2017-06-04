@@ -38,10 +38,10 @@ var Car = (function () {
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
     Car.prototype.move = function (x, y, div) {
-        this.x = x;
-        this.y = y;
-        div.style.left = this.x + "px";
-        div.style.top = this.y + "px";
+        x = x;
+        y = y;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
     };
     return Car;
 }());
@@ -61,9 +61,12 @@ var Game = (function () {
     }
     Game.prototype.Gameloop = function (i) {
         i = i / 10;
-        this.road.push(new Road(i));
+        this.road.push(new Road(0.5, i, document.createElement("road")));
+        this.road.push(new Road(i, 0.5, document.createElement("road_turn")));
         var car = new Car(0.55, 1, document.createElement("car"));
         var car_return = new Car(0.51, 0, document.createElement("car_return"));
+        var car_right = new Car(1, 0.57, document.createElement("car_right"));
+        var car_left = new Car(0, 0.51, document.createElement("car_left"));
     };
     return Game;
 }());
@@ -78,18 +81,17 @@ var Mansion = (function (_super) {
     return Mansion;
 }(Building));
 var Road = (function () {
-    function Road(a) {
-        this.div = document.createElement("road");
-        document.body.appendChild(this.div);
-        var x = 0.5 * window.innerWidth;
-        var y = a * window.innerHeight;
-        this.move(x, y);
+    function Road(a, b, div) {
+        document.body.appendChild(div);
+        var x = a * window.innerWidth;
+        var y = b * window.innerHeight;
+        this.move(x, y, div);
     }
-    Road.prototype.move = function (x, y) {
-        this.x = x;
-        this.y = y;
-        this.div.style.left = this.x + "px";
-        this.div.style.top = this.y + "px";
+    Road.prototype.move = function (x, y, div) {
+        x = x;
+        y = y;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
     };
     return Road;
 }());

@@ -1,23 +1,19 @@
 class Road {
-    x: number;
-    y: number;
-    div: HTMLElement;
 
-    constructor(a: number) {
+    constructor(a: number, b: number, div: HTMLElement) {
 
-        this.div = document.createElement("road");
-        document.body.appendChild(this.div);
+        document.body.appendChild(div);
 
-        var x = 0.5 * window.innerWidth;
-        var y = a * window.innerHeight;
-        this.move(x, y);
+        var x = a * window.innerWidth;
+        var y = b * window.innerHeight;
+        this.move(x, y, div);
     }
 
-    move(x: number, y: number) {
-        this.x = x;
-        this.y = y;
+    move(x: number, y: number, div: HTMLElement) {
+        x = x;
+        y = y;
 
-        this.div.style.left = this.x + "px";
-        this.div.style.top = this.y + "px";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
     }
 }
