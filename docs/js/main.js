@@ -8,21 +8,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Building = (function () {
-    function Building(a, b, div) {
-        document.body.appendChild(div);
-        var x = a * window.innerWidth;
-        var y = b * window.innerHeight;
-        this.move(x, y, div);
-    }
-    Building.prototype.move = function (x, y, div) {
-        x = x;
-        y = y;
-        div.style.left = x + "px";
-        div.style.top = y + "px";
-    };
-    return Building;
-}());
 var Car = (function () {
     function Car(a, b, div) {
         this.color = Math.random() * 360;
@@ -45,13 +30,36 @@ var Car = (function () {
     };
     return Car;
 }());
-var Flat = (function (_super) {
-    __extends(Flat, _super);
-    function Flat() {
-        return _super.call(this, 0.2, 0, document.createElement("flat")) || this;
+var District = (function () {
+    function District(a, b, div, p, l) {
+        document.body.appendChild(div);
+        var x = a * window.innerWidth;
+        var y = b * window.innerHeight;
+        this.move(x, y, div);
+        this.population(p);
+        this.landValue(l);
     }
-    return Flat;
-}(Building));
+    District.prototype.move = function (x, y, div) {
+        x = x;
+        y = y;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+    };
+    District.prototype.population = function (p) {
+        var city = '';
+        if (p < 10) {
+            city = 'Het is een kleine stad';
+        }
+        if (p > 10) {
+            city = 'Het is een grote stad';
+        }
+        console.log(city);
+    };
+    District.prototype.landValue = function (l) {
+        console.log("Je landwaarde is nu $", l);
+    };
+    return District;
+}());
 var Game = (function () {
     function Game() {
         this.road = new Array();
@@ -67,19 +75,20 @@ var Game = (function () {
         var car_return = new Car(0.51, 0, document.createElement("car_return"));
         var car_right = new Car(1, 0.57, document.createElement("car_right"));
         var car_left = new Car(0, 0.51, document.createElement("car_left"));
+        var recreation = new Recreation();
     };
     return Game;
 }());
 window.addEventListener("load", function () {
     new Game();
 });
-var Mansion = (function (_super) {
-    __extends(Mansion, _super);
-    function Mansion() {
-        return _super.call(this, 0.8, 0, document.createElement("mansion")) || this;
+var Recreation = (function (_super) {
+    __extends(Recreation, _super);
+    function Recreation() {
+        return _super.call(this, 0.58, 0.65, document.createElement("recreation"), 11, 500) || this;
     }
-    return Mansion;
-}(Building));
+    return Recreation;
+}(District));
 var Road = (function () {
     function Road(a, b, div) {
         document.body.appendChild(div);

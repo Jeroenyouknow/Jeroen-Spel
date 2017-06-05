@@ -21,6 +21,7 @@ class Game {
         let car_return = new Car(0.51,0,document.createElement("car_return"));
         let car_right = new Car(1,0.57,document.createElement("car_right"));
         let car_left = new Car(0,0.51,document.createElement("car_left"));
+        let recreation = new Recreation();
 
     }   
 } 
