@@ -1,5 +1,7 @@
 class District {
 
+    protected div:HTMLElement;
+    
     constructor(a: number,b: number,div: HTMLElement, p: number, l: number) {
        
         document.body.appendChild(div);

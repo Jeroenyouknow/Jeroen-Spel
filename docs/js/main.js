@@ -63,6 +63,7 @@ var District = (function () {
 var Game = (function () {
     function Game() {
         this.road = new Array();
+        var recreation = new Recreation();
         for (var i = 0; i < 11; i++) {
             this.Gameloop(i);
         }
@@ -75,7 +76,6 @@ var Game = (function () {
         var car_return = new Car(0.51, 0, document.createElement("car_return"));
         var car_right = new Car(1, 0.57, document.createElement("car_right"));
         var car_left = new Car(0, 0.51, document.createElement("car_left"));
-        var recreation = new Recreation();
     };
     return Game;
 }());
