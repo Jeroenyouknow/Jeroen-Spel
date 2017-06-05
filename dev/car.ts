@@ -2,12 +2,12 @@ class Car {
     //Color
     color: number;
 
-    constructor(a: number, b: number, div: HTMLElement, g: number) {
+    constructor(a: number, b: number, div: HTMLElement, g: number,) {
         this.color = Math.random() * 360;
 
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            let audio = new Audio('../docs/audio/Car_horn.mp3');
+            let audio = new Audio('../docs/audio/toeteren.mp3');
             audio.play();
         });
 
