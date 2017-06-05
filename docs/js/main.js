@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Car = (function () {
-    function Car(a, b, div) {
+    function Car(a, b, div, g) {
         this.color = Math.random() * 360;
         document.body.appendChild(div);
         div.addEventListener("click", function () {
@@ -19,6 +19,7 @@ var Car = (function () {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
         this.move(x, y, div);
+        this.fuel(g);
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
@@ -27,6 +28,11 @@ var Car = (function () {
         y = y;
         div.style.left = x + "px";
         div.style.top = y + "px";
+    };
+    Car.prototype.fuel = function (g) {
+        for (var i = g; i > 0; i--) {
+        }
+        console.log("Je hebt nu nog ", i, " liter bezine");
     };
     return Car;
 }());
@@ -47,6 +53,9 @@ var District = (function () {
     };
     District.prototype.population = function (p) {
         var city = '';
+        if (p = 10) {
+            city = 'Je stad heeft geen inwoners';
+        }
         if (p < 10) {
             city = 'Het is een kleine stad';
         }
@@ -72,10 +81,10 @@ var Game = (function () {
         i = i / 10;
         this.road.push(new Road(0.5, i, document.createElement("road")));
         this.road.push(new Road(i, 0.5, document.createElement("road_turn")));
-        var car = new Car(0.55, 1, document.createElement("car"));
-        var car_return = new Car(0.51, 0, document.createElement("car_return"));
-        var car_right = new Car(1, 0.57, document.createElement("car_right"));
-        var car_left = new Car(0, 0.51, document.createElement("car_left"));
+        var car = new Car(0.55, 1, document.createElement("car"), 100);
+        var car_return = new Car(0.51, 0, document.createElement("car_return"), 100);
+        var car_right = new Car(1, 0.57, document.createElement("car_right"), 100);
+        var car_left = new Car(0, 0.51, document.createElement("car_left"), 100);
     };
     return Game;
 }());
@@ -85,7 +94,10 @@ window.addEventListener("load", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        return _super.call(this, 0.58, 0.65, document.createElement("recreation"), 11, 500) || this;
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("recreation"), 11, 500) || this;
+        _this.landValue(750);
+        _this.population(5);
+        return _this;
     }
     return Recreation;
 }(District));

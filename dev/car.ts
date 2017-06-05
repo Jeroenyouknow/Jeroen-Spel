@@ -2,7 +2,7 @@ class Car {
     //Color
     color: number;
 
-    constructor(a: number, b: number, div: HTMLElement) {
+    constructor(a: number, b: number, div: HTMLElement, g: number) {
         this.color = Math.random() * 360;
 
         document.body.appendChild(div);
@@ -15,6 +15,7 @@ class Car {
         var y = b * window.innerHeight;
 
         this.move(x, y, div);
+        this.fuel(g);
 
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
@@ -26,5 +27,11 @@ class Car {
 
         div.style.left = x + "px";
         div.style.top = y + "px";
+    }
+
+    fuel(g: number) {
+      for (var i = g; i > 0; i--) {
+      }
+       console.log("Je hebt nu nog ",i," liter bezine");
     }
 }

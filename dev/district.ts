@@ -26,6 +26,9 @@ class District {
 
     population(p: number){
         let city = '';
+        if (p = 10) {
+           city = 'Je stad heeft geen inwoners';
+        }
         if (p < 10) {
            city = 'Het is een kleine stad';
         }
@@ -36,7 +39,6 @@ class District {
     }
 
     landValue(l: number){
-
         console.log("Je landwaarde is nu $",l);
     }
 }
