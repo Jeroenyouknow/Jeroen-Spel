@@ -84,15 +84,15 @@ stop_sign{
 }
 
 /*Keyframes*/
-@keyframes cardrive {
-0% {
-    transform: translateY(10vh);
+  @keyframes cardrive {
+  0% {
+      transform: translateY(10vh);
+    }
+    
+    100% {
+      transform: translateY(-110vh);
+    }
   }
-  
-  100% {
-    transform: translateY(-110vh);
-  }
-}
 
 @keyframes cardrive_return {
 0% {
