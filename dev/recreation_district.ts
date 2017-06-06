@@ -4,5 +4,6 @@ constructor(){
 
 this.landValue(750);
 this.population(5);
+
 }
 }
