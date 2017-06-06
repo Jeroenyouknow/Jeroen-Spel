@@ -22,10 +22,10 @@ class Game {
     } 
 
     private Spawn(){
-        let car = new Vehicle(0.55,1,document.createElement("car"),100); 
-        let car_return = new Vehicle(0.51,0,document.createElement("car_return"),100);
-        let car_right = new Vehicle(1,0.57,document.createElement("car_right"),100);
-        let car_left = new Vehicle(0,0.51,document.createElement("car_left"),100);
+        let car = new Car(0.55,1,document.createElement("car"),100); 
+        let car_return = new Car(0.51,0,document.createElement("car_return"),100);
+        let car_right = new Car(1,0.57,document.createElement("car_right"),100);
+        let car_left = new Car(0,0.51,document.createElement("car_left"),100);
     }  
 } 
 

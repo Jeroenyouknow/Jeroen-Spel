@@ -78,8 +78,8 @@ var Game = (function () {
     }
     Game.prototype.Gameloop = function (i) {
         i = i / 10;
-        this.road.push(new Road(0.5, i, document.createElement("road")));
         this.road.push(new Road(i, 0.5, document.createElement("road_turn")));
+        this.road.push(new Road(0.5, i, document.createElement("road")));
     };
     Game.prototype.Spawn = function () {
         var car = new Car(0.55, 1, document.createElement("car"), 100);
@@ -116,5 +116,31 @@ var Road = (function () {
         div.style.top = y + "px";
     };
     return Road;
+}());
+var Vehicle = (function () {
+    function Vehicle(a, b, div, g) {
+        this.color = Math.random() * 360;
+        document.body.appendChild(div);
+        div.addEventListener("click", function () {
+            var audio = new Audio('../docs/audio/Car_horn.mp3');
+            audio.play();
+        });
+        var x = a * window.innerWidth;
+        var y = b * window.innerHeight;
+        this.move(x, y, div);
+        this.fuel(g);
+        div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
+        div.style.filter = "hue-rotate(" + this.color + "deg)";
+    }
+    Vehicle.prototype.move = function (x, y, div) {
+        x = x;
+        y = y;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+    };
+    Vehicle.prototype.fuel = function (g) {
+        console.log('Je heb top dit moment nog:', g, 'liter bezine');
+    };
+    return Vehicle;
 }());
 //# sourceMappingURL=main.js.map
