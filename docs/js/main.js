@@ -30,9 +30,7 @@ var Car = (function () {
         div.style.top = y + "px";
     };
     Car.prototype.fuel = function (g) {
-        for (var i = g; i > 0; i--) {
-        }
-        console.log("Je hebt nu nog ", i, " liter bezine");
+        console.log('Je heb top dit moment nog:', g, 'liter bezine');
     };
     return Car;
 }());
@@ -76,11 +74,14 @@ var Game = (function () {
         for (var i = 0; i < 11; i++) {
             this.Gameloop(i);
         }
+        this.Spawn();
     }
     Game.prototype.Gameloop = function (i) {
         i = i / 10;
         this.road.push(new Road(0.5, i, document.createElement("road")));
         this.road.push(new Road(i, 0.5, document.createElement("road_turn")));
+    };
+    Game.prototype.Spawn = function () {
         var car = new Car(0.55, 1, document.createElement("car"), 100);
         var car_return = new Car(0.51, 0, document.createElement("car_return"), 100);
         var car_right = new Car(1, 0.57, document.createElement("car_right"), 100);

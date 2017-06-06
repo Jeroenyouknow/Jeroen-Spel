@@ -30,8 +30,6 @@ class Car {
     }
 
     fuel(g: number) {
-      for (var i = g; i > 0; i--) {
-      }
-       console.log("Je hebt nu nog ",i," liter bezine");
+     console.log('Je heb top dit moment nog:',g,'liter bezine');
     }
 }
