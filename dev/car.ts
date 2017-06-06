@@ -6,7 +6,7 @@ class Car {
 
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            let audio = new Audio('../docs/audio/Car_horn.mp3');
+            let audio = new Audio('../docs/audio/toeteren.mp3');
             audio.play();
         });
 

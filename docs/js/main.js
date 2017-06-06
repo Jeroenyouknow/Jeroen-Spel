@@ -13,7 +13,7 @@ var Car = (function () {
         this.color = Math.random() * 360;
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            var audio = new Audio('../docs/audio/Car_horn.mp3');
+            var audio = new Audio('../docs/audio/toeteren.mp3');
             audio.play();
         });
         var x = a * window.innerWidth;
@@ -91,6 +91,7 @@ var Game = (function () {
     return Game;
 }());
 window.addEventListener("load", function () {
+    alert("Welkom bij Jeroen's Spel een all click spel bouw je stad en laat deze groeien. Om te beginnen geef ik je alvast $ 1000,-  Veel Succes");
     new Game();
 });
 var Recreation = (function (_super) {
