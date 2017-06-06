@@ -86,6 +86,7 @@ var Game = (function () {
         var car_return = new Car(0.51, 0, document.createElement("car_return"), 100);
         var car_right = new Car(1, 0.57, document.createElement("car_right"), 100);
         var car_left = new Car(0, 0.51, document.createElement("car_left"), 100);
+        var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
     };
     return Game;
 }());
@@ -116,6 +117,25 @@ var Road = (function () {
         div.style.top = y + "px";
     };
     return Road;
+}());
+var Sign = (function () {
+    function Sign(a, b, div) {
+        document.body.appendChild(div);
+        div.addEventListener("click", function () {
+            var audio = new Audio('../docs/audio/Stop.mp3');
+            audio.play();
+        });
+        var x = a * window.innerWidth;
+        var y = b * window.innerHeight;
+        this.placing(x, y, div);
+    }
+    Sign.prototype.placing = function (x, y, div) {
+        x = x;
+        y = y;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+    };
+    return Sign;
 }());
 var Vehicle = (function () {
     function Vehicle(a, b, div, g) {
