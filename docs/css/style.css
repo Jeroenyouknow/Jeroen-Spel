@@ -79,8 +79,8 @@ recreation {
 
 stop_sign{
   background-image: url(../images/Stop_sign.png);
-    width: 300px;
-    height: 300px;
+    width: 50px;
+    height: 100px;
 }
 
 /*Keyframes*/
