@@ -34,6 +34,34 @@ var Car = (function () {
     };
     return Car;
 }());
+var Coin = (function () {
+    function Coin(a, b, div, g) {
+        document.body.appendChild(div);
+        div.addEventListener("click", function () {
+            var audio = new Audio('../docs/audio/coin.mp3');
+            audio.play();
+        });
+        var x = a * window.innerWidth;
+        var y = b * window.innerHeight;
+        this.move(x, y, div);
+        this.addCoin(g, div);
+    }
+    Coin.prototype.move = function (x, y, div) {
+        x = x;
+        y = y;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+    };
+    Coin.prototype.addCoin = function (g, div) {
+        var coin = document.getElementById("coin_amount");
+        coin.innerHTML = "Je hebt $1000 coins op dit moment";
+        div.addEventListener("click", function () {
+            g++;
+            coin.innerHTML = "Je hebt $" + g + " coins op dit moment";
+        });
+    };
+    return Coin;
+}());
 var District = (function () {
     function District(a, b, div, p, l) {
         document.body.appendChild(div);
@@ -70,7 +98,6 @@ var District = (function () {
 var Game = (function () {
     function Game() {
         this.road = new Array();
-        var recreation = new Recreation();
         for (var i = 0; i < 11; i++) {
             this.Gameloop(i);
         }
@@ -87,6 +114,8 @@ var Game = (function () {
         var car_right = new Car(1, 0.57, document.createElement("car_right"), 100);
         var car_left = new Car(0, 0.51, document.createElement("car_left"), 100);
         var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
+        var coins = new Coin(0.40, 0.38, document.createElement("coin"), 1000);
+        var recreation = new Recreation();
     };
     return Game;
 }());

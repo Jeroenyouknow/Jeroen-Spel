@@ -7,7 +7,7 @@ class Game {
     constructor() {
         
         this.road = new Array<Road>();
-        let recreation = new Recreation();
+        
 
         for(let i = 0; i < 11; i++){
             this.Gameloop(i);     
@@ -27,6 +27,8 @@ class Game {
         let car_right = new Car(1,0.57,document.createElement("car_right"),100);
         let car_left = new Car(0,0.51,document.createElement("car_left"),100);
         let stop_sign = new Sign(0.45,0.38,document.createElement("stop_sign"));
+        let coins = new Coin(0.40,0.38,document.createElement("coin"),1000);
+        let recreation = new Recreation();
     }  
 } 
 
