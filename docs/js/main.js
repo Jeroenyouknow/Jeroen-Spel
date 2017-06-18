@@ -9,17 +9,16 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Car = (function () {
-    function Car(a, b, div, g) {
+    function Car(a, b, div) {
         this.color = Math.random() * 360;
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            var audio = new Audio('../docs/audio/toeteren.mp3');
+            var audio = new Audio('../docs/audio/Car_horn.mp3');
             audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
         this.move(x, y, div);
-        this.fuel(g);
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
@@ -29,13 +28,10 @@ var Car = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
-    Car.prototype.fuel = function (g) {
-        console.log('Je heb top dit moment nog:', g, 'liter bezine');
-    };
     return Car;
 }());
 var Coin = (function () {
-    function Coin(a, b, div, g) {
+    function Coin(a, b, div, g, v) {
         document.body.appendChild(div);
         div.addEventListener("click", function () {
             var audio = new Audio('../docs/audio/coin.mp3');
@@ -44,7 +40,7 @@ var Coin = (function () {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
         this.move(x, y, div);
-        this.addCoin(g, div);
+        this.addCoin(g, div, v);
     }
     Coin.prototype.move = function (x, y, div) {
         x = x;
@@ -52,11 +48,11 @@ var Coin = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
-    Coin.prototype.addCoin = function (g, div) {
+    Coin.prototype.addCoin = function (g, div, v) {
         var coin = document.getElementById("coin_amount");
         coin.innerHTML = "Je hebt $1000 coins op dit moment";
         div.addEventListener("click", function () {
-            g++;
+            g = g + v;
             coin.innerHTML = "Je hebt $" + g + " coins op dit moment";
         });
     };
@@ -109,18 +105,20 @@ var Game = (function () {
         this.road.push(new Road(0.5, i, document.createElement("road")));
     };
     Game.prototype.Spawn = function () {
-        var car = new Car(0.55, 1, document.createElement("car"), 100);
-        var car_return = new Car(0.51, 0, document.createElement("car_return"), 100);
-        var car_right = new Car(1, 0.57, document.createElement("car_right"), 100);
-        var car_left = new Car(0, 0.51, document.createElement("car_left"), 100);
+        var car = new Car(0.55, 1, document.createElement("car"));
+        var car_return = new Car(0.51, 0, document.createElement("car_return"));
+        var car_right = new Car(1, 0.57, document.createElement("car_right"));
+        var car_left = new Car(0, 0.51, document.createElement("car_left"));
         var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
-        var coins = new Coin(0.40, 0.38, document.createElement("coin"), 1000);
-        var recreation = new Recreation();
+        var coins = new Coin(0.40, 0.38, document.createElement("coin"), 1000, 1000);
     };
     return Game;
 }());
-window.addEventListener("load", function () {
-    alert("Welkom bij Jeroen's Spel een all click spel bouw je stad en laat deze groeien. Om te beginnen geef ik je alvast $ 1000,-  Veel Succes");
+var start = document.createElement("button");
+document.body.appendChild(start);
+start.innerHTML = "Klik om het spel te starten!";
+start.addEventListener("click", function () {
+    start.remove();
     new Game();
 });
 var Recreation = (function (_super) {

@@ -1,4 +1,8 @@
-window.addEventListener("load", function() {
-    alert("Welkom bij Jeroen's Spel een all click spel bouw je stad en laat deze groeien. Om te beginnen geef ik je alvast $ 1000,-  Veel Succes")
+let start = document.createElement("button");
+document.body.appendChild(start);
+start.innerHTML = "Klik om het spel te starten!";
+start.addEventListener("click", function() {
+    start.remove();  
     new Game();
+    
 });

@@ -1,5 +1,3 @@
-/// <reference path="car.ts"/>
-
 class Game {
 
      private road :Array<Road>;
@@ -22,13 +20,12 @@ class Game {
     } 
 
     private Spawn(){
-        let car = new Car(0.55,1,document.createElement("car"),100); 
-        let car_return = new Car(0.51,0,document.createElement("car_return"),100);
-        let car_right = new Car(1,0.57,document.createElement("car_right"),100);
-        let car_left = new Car(0,0.51,document.createElement("car_left"),100);
+        let car = new Car(0.55,1,document.createElement("car")); 
+        let car_return = new Car(0.51,0,document.createElement("car_return"));
+        let car_right = new Car(1,0.57,document.createElement("car_right"));
+        let car_left = new Car(0,0.51,document.createElement("car_left"));
         let stop_sign = new Sign(0.45,0.38,document.createElement("stop_sign"));
-        let coins = new Coin(0.40,0.38,document.createElement("coin"),1000);
-        let recreation = new Recreation();
+        let coins = new Coin(0.40,0.38,document.createElement("coin"),1000,1000);
     }  
 } 
 
