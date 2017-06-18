@@ -3,8 +3,6 @@ class Coin{
 
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            let audio = new Audio('../docs/audio/coin.mp3');
-            audio.play();
         });
 
         var x = a * window.innerWidth;

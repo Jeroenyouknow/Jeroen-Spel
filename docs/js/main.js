@@ -13,8 +13,6 @@ var Car = (function () {
         this.color = Math.random() * 360;
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            var audio = new Audio('../docs/audio/Car_horn.mp3');
-            audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
@@ -34,8 +32,6 @@ var Coin = (function () {
     function Coin(a, b, div, g, v) {
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            var audio = new Audio('../docs/audio/coin.mp3');
-            audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
@@ -150,8 +146,6 @@ var Sign = (function () {
     function Sign(a, b, div) {
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            var audio = new Audio('../docs/audio/Stop.mp3');
-            audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
@@ -170,8 +164,6 @@ var Vehicle = (function () {
         this.color = Math.random() * 360;
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            var audio = new Audio('../docs/audio/Car_horn.mp3');
-            audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
