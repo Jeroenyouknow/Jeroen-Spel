@@ -98,17 +98,11 @@ var Game = (function () {
         this.audio = new Audio('audio/game_music.mp3');
         this.audio.play();
         this.road = new Array();
-        for (var i = 0; i < 20; i++) {
-            this.Gameloop(i);
-        }
         this.Spawn();
     }
-    Game.prototype.Gameloop = function (i) {
-        i = i / 10;
-        this.road.push(new Road(i, 0.5, document.createElement("road_turn")));
-        this.road.push(new Road(0.5, i, document.createElement("road")));
-    };
     Game.prototype.Spawn = function () {
+        this.road.push(new Road(0, 0.5, document.createElement("road_turn")));
+        this.road.push(new Road(0.5, 0, document.createElement("road")));
         var car = new Car(0.55, 1, document.createElement("car"));
         var car_return = new Car(0.51, 0, document.createElement("car_return"));
         var car_right = new Car(1, 0.57, document.createElement("car_right"));

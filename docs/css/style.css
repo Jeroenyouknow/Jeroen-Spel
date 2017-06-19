@@ -20,7 +20,6 @@ body * {
     display: block;
     margin:0px; padding:0px;
     box-sizing: border-box;
-    background-repeat: no-repeat;
 }
 
 background {
@@ -59,7 +58,7 @@ button:active {
 /*Style of the items placed in the game: Car,Coin,Road,Sign,District*/
 car {
     background-image: url(../images/car.png);
-    width: 50px;
+    width: 45px;
     height:90px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
@@ -70,7 +69,7 @@ car {
 
 car_return {
     background-image: url(../images/car_return.png);
-    width: 50px;
+    width: 45px;
     height: 90px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
@@ -80,7 +79,7 @@ car_return {
 car_right {
     background-image: url(../images/car_right.png);
     width: 90px;
-    height: 50px;
+    height: 45px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
     animation: cardrive_right 8s linear infinite;
@@ -88,8 +87,8 @@ car_right {
 
 car_left {
     background-image: url(../images/car_left.png);
-    width: 90px;
-    height: 50px;
+    width: 85px;
+    height: 45px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
     animation: cardrive_left 9s linear infinite;
@@ -97,18 +96,21 @@ car_left {
 
 road{
       background-image: url(../images/road.jpg);
-      width: 125px;
-      height: 125px;
+      width: 118px;
+      height: 100vh;
+      
 }
 
 road_turn{
       background-image: url(../images/road_turn.jpg);
-      width: 145px;
-      height: 125px;
+      background-size: auto;
+      width: 100vw;
+      height: 118px;
 }
 
 recreation {
     background-image: url(../images/district_1.jpg);
+    background-size: auto;
     width: 300px;
     height: 300px;
   
@@ -116,7 +118,7 @@ recreation {
 
 stop_sign{
   background-image: url(../images/Stop_sign.png);
-    width: 50px;
+    width: 38px;
     height: 100px;
 }
 

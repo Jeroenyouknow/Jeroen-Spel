@@ -13,21 +13,13 @@ class Game {
         this.audio.play()
         
         this.road = new Array<Road>();
+this.Spawn();
         
-
-        for(let i = 0; i < 20; i++){
-            this.Gameloop(i);     
-        }
-         this.Spawn();
-    }  
-
-    private Gameloop(i: number){
-        i = i/10;
-        this.road.push(new Road(i,0.5,document.createElement("road_turn")));
-        this.road.push(new Road(0.5,i,document.createElement("road")));
-    } 
-
+       
+    }
     private Spawn(){
+        this.road.push(new Road(0,0.5,document.createElement("road_turn")));
+        this.road.push(new Road(0.5,0,document.createElement("road")));
         let car = new Car(0.55,1,document.createElement("car")); 
         let car_return = new Car(0.51,0,document.createElement("car_return"));
         let car_right = new Car(1,0.57,document.createElement("car_right"));
@@ -38,8 +30,6 @@ class Game {
 
     private Stats(){
         let money_balance = this.money
-
-
     }
 } 
 
