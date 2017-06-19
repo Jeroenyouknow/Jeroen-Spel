@@ -1,8 +1,16 @@
 class Game {
+    
+    private audio:HTMLAudioElement;
+    private  money:number;
+    private  fame:number;
+    private  population:number;
 
      private road :Array<Road>;
 
     constructor() {
+
+        this.audio = new Audio('audio/game_music.mp3')
+        this.audio.play()
         
         this.road = new Array<Road>();
         
@@ -25,7 +33,13 @@ class Game {
         let car_right = new Car(1,0.57,document.createElement("car_right"));
         let car_left = new Car(0,0.51,document.createElement("car_left"));
         let stop_sign = new Sign(0.45,0.38,document.createElement("stop_sign"));
-        let coins = new Coin(0.40,0.38,document.createElement("coin"),1000,1000);
+        let recreation_district = new Recreation();
     }  
+
+    private Stats(){
+        let money_balance = this.money
+
+
+    }
 } 
 

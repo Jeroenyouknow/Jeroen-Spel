@@ -55,13 +55,13 @@ var Coin = (function () {
     return Coin;
 }());
 var District = (function () {
-    function District(a, b, div, p, l) {
-        document.body.appendChild(div);
+    function District(a, b, div_buy, div_district, p, l, m) {
+        document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div);
-        this.population(p);
-        this.landValue(l);
+        this.move(x, y, div_buy);
+        div_buy.addEventListener("click", function () {
+        });
     }
     District.prototype.move = function (x, y, div) {
         x = x;
@@ -70,25 +70,33 @@ var District = (function () {
         div.style.top = y + "px";
     };
     District.prototype.population = function (p) {
-        var city = '';
-        if (p = 10) {
-            city = 'Je stad heeft geen inwoners';
-        }
-        if (p < 10) {
-            city = 'Het is een kleine stad';
-        }
-        if (p > 10) {
-            city = 'Het is een grote stad';
-        }
-        console.log(city);
+        var population = document.getElementById("population");
+        population.innerHTML = "Bewoners: " + p;
     };
-    District.prototype.landValue = function (l) {
-        console.log("Je landwaarde is nu $", l);
+    District.prototype.landValue = function () {
+        var landvalue = document.getElementById("landvalue");
+        landvalue.innerHTML = "Landwaarde: " + this.l;
     };
+    District.prototype.money = function () {
+        var money = document.getElementById("money");
+        money.innerHTML = "Geld: $" + this.m;
+    };
+    District.prototype.buy = function (div_buy, div_district) {
+        if (this.m === this.l) {
+            alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
+            alert("District aan het bouwen...");
+            div_buy.remove();
+            document.body.appendChild(div_district);
+            this.m = this.m - this.l;
+        }
+    };
+    ;
     return District;
 }());
 var Game = (function () {
     function Game() {
+        this.audio = new Audio('audio/game_music.mp3');
+        this.audio.play();
         this.road = new Array();
         for (var i = 0; i < 11; i++) {
             this.Gameloop(i);
@@ -106,7 +114,10 @@ var Game = (function () {
         var car_right = new Car(1, 0.57, document.createElement("car_right"));
         var car_left = new Car(0, 0.51, document.createElement("car_left"));
         var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
-        var coins = new Coin(0.40, 0.38, document.createElement("coin"), 1000, 1000);
+        var recreation_district = new Recreation();
+    };
+    Game.prototype.Stats = function () {
+        var money_balance = this.money;
     };
     return Game;
 }());
@@ -114,15 +125,19 @@ var start = document.createElement("button");
 document.body.appendChild(start);
 start.innerHTML = "Klik om het spel te starten!";
 start.addEventListener("click", function () {
+    alert("Welkom bij Jeroen City, Veel speel plezier!");
     start.remove();
     new Game();
 });
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("recreation"), 11, 500) || this;
-        _this.landValue(750);
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 0, 0, 0) || this;
+        _this.l = 750;
+        _this.landValue();
         _this.population(5);
+        _this.m = 1000;
+        _this.money();
         return _this;
     }
     return Recreation;

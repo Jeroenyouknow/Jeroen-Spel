@@ -1,30 +1,15 @@
-button {
-  width: 50%;
-  Height: 15%;
+/*Style of the menu with the items: Money, population and fame*/
+menu{
+  background-color: lightseagreen;
+  width: 20%;
+  font-size: 150%;
   display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
+  position: inherit;
   text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
 }
-
-button:hover {background-color: #3e8e41}
-
-button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
+/*Style of the body of the game*/
 body {
-    background-color: #70CF51;
+    background-color: #456789;
     font-family: Arial, Helvetica, sans-serif;
     overflow:hidden;
     margin:0px; padding:0px;
@@ -45,6 +30,33 @@ background {
   background-repeat: repeat;
 }
 
+
+
+/*Style for the button on the start screen*/
+button {
+  margin-top: 25%;
+  margin-left: 25%;
+  width: 50%;
+  Height: 15%;
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  box-shadow: 0 9px #999;
+}
+
+button:hover {background-color: #3e8e41}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*Style of the items placed in the game: Car,Coin,Road,Sign,District*/
 car {
     background-image: url(../images/car.png);
     width: 50px;
@@ -114,12 +126,15 @@ coin{
     height: 60px;
 }
 
-coin_amount{
- text-decoration-style: bold;
- font-size: 20px;
+buy_1 {
+    background-image: url(../images/for_sale.gif);
+    width: 215px;
+    height: 200px;
 }
 
-/*Keyframes*/
+
+
+/*Keyframes for the Cars*/
   @keyframes cardrive {
   0% {
       transform: translateY(10vh);

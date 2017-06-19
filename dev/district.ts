@@ -1,18 +1,23 @@
 class District {
 
-    protected div:HTMLElement;
-    
-    constructor(a: number,b: number,div: HTMLElement, p: number, l: number) {
-       
-        document.body.appendChild(div);
-   
+    protected div: HTMLElement;
+    protected m: number;
+    protected l: number;
+
+    constructor(a: number, b: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number, m: number) {
+
+        document.body.appendChild(div_buy);
+
 
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
 
-        this.move(x, y, div);
-        this.population(p);
-        this.landValue(l);
+        this.move(x, y, div_buy);
+
+         div_buy.addEventListener("click", function(){
+             
+         }
+
 
     }
 
@@ -24,21 +29,33 @@ class District {
         div.style.top = y + "px";
     }
 
-    population(p: number){
-        let city = '';
-        if (p = 10) {
-           city = 'Je stad heeft geen inwoners';
-        }
-        if (p < 10) {
-           city = 'Het is een kleine stad';
-        }
-       if (p > 10){
-           city = 'Het is een grote stad';
-       }
-       console.log(city);
+    population(p: number) {
+        let population = document.getElementById("population");
+        population.innerHTML = "Bewoners: " + p;
     }
 
-    landValue(l: number){
-        console.log("Je landwaarde is nu $",l);
+
+    landValue() {
+        let landvalue = document.getElementById("landvalue");
+        landvalue.innerHTML = "Landwaarde: " + this.l;
     }
-}
+
+    money() {
+        let money = document.getElementById("money");
+        money.innerHTML = "Geld: $" + this.m;
+    }
+
+    buy(div_buy: HTMLElement, div_district: HTMLElement) {
+       
+            if (this.m === this.l) {
+                alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
+                alert("District aan het bouwen...");
+                div_buy.remove();
+                document.body.appendChild(div_district);
+                this.m = this.m - this.l;
+            }
+
+
+        };
+    }
+       
