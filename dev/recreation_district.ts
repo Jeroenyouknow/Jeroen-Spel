@@ -4,9 +4,16 @@ class Recreation extends District {
 
         this.l = 750;
         this.landValue();
-        this.population(5);
+        this.p = 5;
+        this.population();
         this.m = 1000;
         this.money();
+        setInterval(this.addMoney, 1500);
+    }
 
+
+
+    addMoney(){
+       
     }
 }

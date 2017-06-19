@@ -60,8 +60,7 @@ var District = (function () {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
         this.move(x, y, div_buy);
-        div_buy.addEventListener("click", function () {
-        });
+        div_buy.addEventListener("click", this.buy);
     }
     District.prototype.move = function (x, y, div) {
         x = x;
@@ -69,9 +68,9 @@ var District = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
-    District.prototype.population = function (p) {
+    District.prototype.population = function () {
         var population = document.getElementById("population");
-        population.innerHTML = "Bewoners: " + p;
+        population.innerHTML = "Bewoners: " + this.p;
     };
     District.prototype.landValue = function () {
         var landvalue = document.getElementById("landvalue");
@@ -81,11 +80,12 @@ var District = (function () {
         var money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
     };
-    District.prototype.buy = function (div_buy, div_district) {
+    District.prototype.buy = function () {
         if (this.m === this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
-            div_buy.remove();
+            var buy = div_buy;
+            buy.remove();
             document.body.appendChild(div_district);
             this.m = this.m - this.l;
         }
@@ -129,11 +129,15 @@ var Recreation = (function (_super) {
         var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 0, 0, 0) || this;
         _this.l = 750;
         _this.landValue();
-        _this.population(5);
+        _this.p = 5;
+        _this.population();
         _this.m = 1000;
         _this.money();
+        setInterval(_this.addMoney, 1500);
         return _this;
     }
+    Recreation.prototype.addMoney = function () {
+    };
     return Recreation;
 }(District));
 var Road = (function () {

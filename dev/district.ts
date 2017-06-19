@@ -1,23 +1,16 @@
 class District {
 
-    protected div: HTMLElement;
     protected m: number;
     protected l: number;
+    protected p: number;
 
     constructor(a: number, b: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number, m: number) {
 
         document.body.appendChild(div_buy);
-
-
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-
         this.move(x, y, div_buy);
-
-         div_buy.addEventListener("click", function(){
-             
-         }
-
+        div_buy.addEventListener("click", this.buy);
 
     }
 
@@ -29,9 +22,9 @@ class District {
         div.style.top = y + "px";
     }
 
-    population(p: number) {
+    population() {
         let population = document.getElementById("population");
-        population.innerHTML = "Bewoners: " + p;
+        population.innerHTML = "Bewoners: " + this.p;
     }
 
 
@@ -45,17 +38,17 @@ class District {
         money.innerHTML = "Geld: $" + this.m;
     }
 
-    buy(div_buy: HTMLElement, div_district: HTMLElement) {
-       
-            if (this.m === this.l) {
-                alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
-                alert("District aan het bouwen...");
-                div_buy.remove();
-                document.body.appendChild(div_district);
-                this.m = this.m - this.l;
-            }
+    buy() {
+
+        if (this.m === this.l) {
+            alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
+            alert("District aan het bouwen...");
+            let buy = div_buy;
+            buy.remove();
+            document.body.appendChild(div_district);
+            this.m = this.m - this.l;
+        }
 
 
-        };
-    }
-       
+    };
+}
