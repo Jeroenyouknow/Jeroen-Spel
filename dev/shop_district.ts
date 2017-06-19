@@ -1,6 +1,6 @@
-class Recreation extends District {
+class Shop extends District {
     constructor() {
-        super(0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 10, 12, 2);
+        super(0.58, 0.65, document.createElement("buy_3"), document.createElement("shop"), 10, 12, 1);
         console.log(this.m);
         setInterval( () => this.landValue(), 1500);
         setInterval( () => this.population(), 1500);

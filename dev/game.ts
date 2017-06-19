@@ -26,6 +26,9 @@ class Game {
         let car_left = new Car(0, 0.51, document.createElement("car_left"));
         let stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
         let recreation_district = new Recreation();
+        let shop_district = new Shop();
+        let factory_district = new Factory();
+        let living_district = new Living();
     }
 
     private Stats() {

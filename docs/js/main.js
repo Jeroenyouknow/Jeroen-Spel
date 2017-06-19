@@ -110,6 +110,18 @@ var District = (function () {
     ;
     return District;
 }());
+var Factory = (function (_super) {
+    __extends(Factory, _super);
+    function Factory() {
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_4"), document.createElement("factory"), 10, 12, 3) || this;
+        console.log(_this.m);
+        setInterval(function () { return _this.landValue(); }, 1500);
+        setInterval(function () { return _this.population(); }, 1500);
+        setInterval(function () { return _this.money(); }, 1500);
+        return _this;
+    }
+    return Factory;
+}(District));
 var Game = (function () {
     function Game() {
         this.audio = new Audio('audio/game_music.mp3');
@@ -127,12 +139,27 @@ var Game = (function () {
         var car_left = new Car(0, 0.51, document.createElement("car_left"));
         var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
         var recreation_district = new Recreation();
+        var shop_district = new Shop();
+        var factory_district = new Factory();
+        var living_district = new Living();
     };
     Game.prototype.Stats = function () {
         var money_balance = this.money;
     };
     return Game;
 }());
+var Living = (function (_super) {
+    __extends(Living, _super);
+    function Living() {
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_2"), document.createElement("living"), 10, 12, 4) || this;
+        console.log(_this.m);
+        setInterval(function () { return _this.landValue(); }, 1500);
+        setInterval(function () { return _this.population(); }, 1500);
+        setInterval(function () { return _this.money(); }, 1500);
+        return _this;
+    }
+    return Living;
+}(District));
 var isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
@@ -169,7 +196,7 @@ start.addEventListener("click", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 10, 12, 200) || this;
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 10, 12, 2) || this;
         console.log(_this.m);
         setInterval(function () { return _this.landValue(); }, 1500);
         setInterval(function () { return _this.population(); }, 1500);
@@ -193,6 +220,18 @@ var Road = (function () {
     };
     return Road;
 }());
+var Shop = (function (_super) {
+    __extends(Shop, _super);
+    function Shop() {
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_3"), document.createElement("shop"), 10, 12, 1) || this;
+        console.log(_this.m);
+        setInterval(function () { return _this.landValue(); }, 1500);
+        setInterval(function () { return _this.population(); }, 1500);
+        setInterval(function () { return _this.money(); }, 1500);
+        return _this;
+    }
+    return Shop;
+}(District));
 var Sign = (function () {
     function Sign(a, b, div) {
         document.body.appendChild(div);
