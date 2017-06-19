@@ -19,5 +19,10 @@ Future updates:
 - New sounds
 - New sprites
 
+Updates (not planned):
+- New roads
+- New method to let the cars drive
+- Mobile version => now you wil get an alert
+
 
 Want to play the game? https://jeroenyouknow.github.io/Jeroen-Spel/
