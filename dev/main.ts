@@ -6,7 +6,7 @@ var isMobile = {
         return navigator.userAgent.match(/BlackBerry/i);
     },
     iOS: function () {
-        return navigator.userAgent.match(/iPhone|iPod/i);
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
     },
     Opera: function () {
         return navigator.userAgent.match(/Opera Mini/i);
@@ -24,14 +24,14 @@ let start = document.createElement("button");
 document.body.appendChild(start);
 start.innerHTML = "Klik om het spel te starten!";
 start.addEventListener("click", function () {
-    if (isMobile.any()) {
-        alert('Het spijt ons maar de game is niet op Mobiele devices beschikbaar!');
-    }
+    // if (isMobile.any()) {
+    //     alert('Het spijt ons maar de game is niet op Mobiele devices beschikbaar!');
+    // }
 
-    else {
+    
         alert("Welkom bij Jeroen City, Veel speel plezier!");
         start.remove();
         new Game();
-    }
+
 
 });
