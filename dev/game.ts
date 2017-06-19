@@ -15,7 +15,7 @@ class Game {
         this.road = new Array<Road>();
         
 
-        for(let i = 0; i < 12; i++){
+        for(let i = 0; i < 20; i++){
             this.Gameloop(i);     
         }
          this.Spawn();
