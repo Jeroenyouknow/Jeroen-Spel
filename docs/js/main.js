@@ -56,17 +56,28 @@ var Coin = (function () {
 }());
 var District = (function () {
     function District(a, b, div_buy, div_district, p, l, m) {
+        var _this = this;
+        this.m = 0;
+        this.l = 0;
+        this.p = 0;
+        this.district = div_district;
+        this.forsale = div_buy;
+        this.m = m;
+        this.l = l;
+        this.p = p;
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div_buy);
-        div_buy.addEventListener("click", this.buy);
+        this.move(x, y, div_buy, div_district);
+        this.forsale.addEventListener("click", function (e) { return _this.buy(e); });
     }
-    District.prototype.move = function (x, y, div) {
+    District.prototype.move = function (x, y, div, div_district) {
         x = x;
         y = y;
         div.style.left = x + "px";
         div.style.top = y + "px";
+        div_district.style.left = x + "px";
+        div_district.style.top = y + "px";
     };
     District.prototype.population = function () {
         var population = document.getElementById("population");
@@ -79,15 +90,21 @@ var District = (function () {
     District.prototype.money = function () {
         var money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
+        console.log(this.m);
     };
-    District.prototype.buy = function () {
-        if (this.m === this.l) {
+    District.prototype.buy = function (e) {
+        console.log(this.m);
+        if (this.m > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
-            var buy = div_buy;
-            buy.remove();
-            document.body.appendChild(div_district);
+            this.forsale.remove();
+            document.body.appendChild(this.district);
             this.m = this.m - this.l;
+        }
+        else {
+            alert("Je hebt nog niet genoeg je moet nog doorsparen!");
+            alert("Je hebt nu: $" + this.m + " en de waarde is: $" + this.l);
+            console.log(this.m);
         }
     };
     ;
@@ -127,18 +144,13 @@ start.addEventListener("click", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 0, 0, 0) || this;
-        _this.l = 750;
-        _this.landValue();
-        _this.p = 5;
-        _this.population();
-        _this.m = 1000;
-        _this.money();
-        setInterval(_this.addMoney, 1500);
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 10, 12, 200) || this;
+        console.log(_this.m);
+        setInterval(function () { return _this.landValue(); }, 1500);
+        setInterval(function () { return _this.population(); }, 1500);
+        setInterval(function () { return _this.money(); }, 1500);
         return _this;
     }
-    Recreation.prototype.addMoney = function () {
-    };
     return Recreation;
 }(District));
 var Road = (function () {

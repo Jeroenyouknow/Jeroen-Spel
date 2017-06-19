@@ -62,7 +62,7 @@ car {
     height:90px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
-    animation: cardrive 5s linear infinite;
+    animation: cardrive 10s linear infinite;
 }
 
 
@@ -73,7 +73,7 @@ car_return {
     height: 90px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
-    animation: cardrive_return 6s linear infinite;
+    animation: cardrive_return 10s linear infinite;
 }
 
 car_right {
@@ -82,7 +82,7 @@ car_right {
     height: 45px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
-    animation: cardrive_right 8s linear infinite;
+    animation: cardrive_right 15s linear infinite;
 }
 
 car_left {
@@ -91,13 +91,13 @@ car_left {
     height: 45px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
-    animation: cardrive_left 9s linear infinite;
+    animation: cardrive_left 15s linear infinite;
 }
 
 road{
       background-image: url(../images/road.jpg);
       width: 118px;
-      height: 100vh;
+       height: 100vh;
       
 }
 

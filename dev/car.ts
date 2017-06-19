@@ -6,7 +6,7 @@ class Car {
 
         document.body.appendChild(div);
         div.addEventListener("click", function () {
-            
+
         });
 
         var x = a * window.innerWidth;
