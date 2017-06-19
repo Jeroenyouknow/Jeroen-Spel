@@ -111,7 +111,7 @@ road_turn{
 recreation {
     background-image: url(../images/district_1.jpg);
     background-size: auto;
-    width: 300px;
+    width: 100vw;
     height: 300px;
   
 }
