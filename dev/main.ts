@@ -1,20 +1,20 @@
 var isMobile = {
-    Android: function() {
+    Android: function () {
         return navigator.userAgent.match(/Android/i);
     },
-    BlackBerry: function() {
+    BlackBerry: function () {
         return navigator.userAgent.match(/BlackBerry/i);
     },
-    iOS: function() {
+    iOS: function () {
         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
     },
-    Opera: function() {
+    Opera: function () {
         return navigator.userAgent.match(/Opera Mini/i);
     },
-    Windows: function() {
+    Windows: function () {
         return navigator.userAgent.match(/IEMobile/i);
     },
-    any: function() {
+    any: function () {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
 };
@@ -23,15 +23,15 @@ var isMobile = {
 let start = document.createElement("button");
 document.body.appendChild(start);
 start.innerHTML = "Klik om het spel te starten!";
-start.addEventListener("click", function() {
-    if( isMobile.any() ){
-        alert('Het soijt ons maar de game is niet op Mobiele devices beschikbaar!');
-    } 
-
-    else{
-        alert("Welkom bij Jeroen City, Veel speel plezier!");
-        start.remove(); 
-        new Game(); 
+start.addEventListener("click", function () {
+    if (isMobile.any()) {
+        alert('Het spijt ons maar de game is niet op Mobiele devices beschikbaar!');
     }
-    
+
+    else {
+        alert("Welkom bij Jeroen City, Veel speel plezier!");
+        start.remove();
+        new Game();
+    }
+
 });

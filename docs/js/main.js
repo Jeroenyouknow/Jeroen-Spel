@@ -158,7 +158,7 @@ document.body.appendChild(start);
 start.innerHTML = "Klik om het spel te starten!";
 start.addEventListener("click", function () {
     if (isMobile.any()) {
-        alert('Het soijt ons maar de game is niet op Mobiele devices beschikbaar!');
+        alert('Het spijt ons maar de game is niet op Mobiele devices beschikbaar!');
     }
     else {
         alert("Welkom bij Jeroen City, Veel speel plezier!");
