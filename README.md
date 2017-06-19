@@ -7,15 +7,15 @@ The game is a city game where you need to manage four districts.
 - Factory
 - Shop
 
-You need to collect coins to upgrade your districts and so generate more income form your districts.
+You need to collect money to buy the four districts.
+When you start the game you get an starting amount of $ 1000,-.
+With that you can buy your first district.
 
 Future updates:
-
-- Car's will need fuel
-- Coins
-- XP-system
-- Airplane/airport
-- Car's stopping at stop sign
+- End Screen
+- Police Car 
+- Plane
+- Other three districts
 - New sounds
 - New sprites
 
