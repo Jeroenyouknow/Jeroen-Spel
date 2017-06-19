@@ -157,14 +157,9 @@ var start = document.createElement("button");
 document.body.appendChild(start);
 start.innerHTML = "Klik om het spel te starten!";
 start.addEventListener("click", function () {
-    if (isMobile.any()) {
-        alert('Het spijt ons maar de game is niet op Mobiele devices beschikbaar!');
-    }
-    else {
-        alert("Welkom bij Jeroen City, Veel speel plezier!");
-        start.remove();
-        new Game();
-    }
+    alert("Welkom bij Jeroen City, Veel speel plezier!");
+    start.remove();
+    new Game();
 });
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
