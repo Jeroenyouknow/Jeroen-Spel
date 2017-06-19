@@ -97,6 +97,7 @@ var Game = (function () {
     function Game() {
         this.audio = new Audio('audio/game_music.mp3');
         this.audio.play();
+        this.audio.loop = true;
         this.road = new Array();
         this.Spawn();
     }
