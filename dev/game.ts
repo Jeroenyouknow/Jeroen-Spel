@@ -14,6 +14,7 @@ class Game {
         this.audio.loop = true;
         this.road = new Array<Road>();
         this.Spawn();
+        this.methodes();
 
 
     }
@@ -31,8 +32,11 @@ class Game {
         // let living_district = new Living();
     }
 
-    private Stats() {
-        let money_balance = this.money
+    private methodes() {
+        // let help = document.createElement("help");
+        // document.body.appendChild(help);
+        // let end = document.createElement("end");
+        // document.body.appendChild(end);
     }
 }
 

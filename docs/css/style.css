@@ -134,6 +134,19 @@ buy_1 {
     height: 200px;
 }
 
+help{
+  background-image: url(../images/help.png);
+
+}
+
+end{
+  background-image: url(../images/end.png);
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-repeat: no-repeat;
+}
+
 
 
 /*Keyframes for the Cars*/

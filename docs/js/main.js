@@ -132,6 +132,7 @@ var Game = (function () {
         this.audio.loop = true;
         this.road = new Array();
         this.Spawn();
+        this.methodes();
     }
     Game.prototype.Spawn = function () {
         this.road.push(new Road(0, 0.5, document.createElement("road_turn")));
@@ -143,8 +144,7 @@ var Game = (function () {
         var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
         var recreation_district = new Recreation();
     };
-    Game.prototype.Stats = function () {
-        var money_balance = this.money;
+    Game.prototype.methodes = function () {
     };
     return Game;
 }());
