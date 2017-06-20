@@ -6,12 +6,12 @@ class District {
     private district: HTMLElement;
     private forsale: HTMLElement;
 
-    constructor(a: number, b: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number, m: number) {
+    constructor(a: number, b: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number) {
         this.district = div_district;
         this.forsale = div_buy;
-        this.m = m;
+        this.m = 1000;
         this.l = l;
-        this.p = p;
+        this.p = l;
 
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
@@ -39,7 +39,7 @@ class District {
 
     landValue() {
         let landvalue = document.getElementById("landvalue");
-        landvalue.innerHTML = "Landwaarde: " + this.l;
+        landvalue.innerHTML = "Landwaarde: $" + this.l;
     }
 
     money() {
@@ -49,19 +49,21 @@ class District {
     }
 
     buy(e:MouseEvent) {
-        console.log(this.m)
+        alert("Deze district kost: $"+this.l);
+        let money_need = this.l - this.m;
         if (this.m > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
            this.forsale.remove();
             document.body.appendChild(this.district); 
             this.m = this.m - this.l;
+            setInterval( () => this.landValue(), 1500);
+            setInterval( () => this.population(), 1500);
         }
 
         else{
             alert("Je hebt nog niet genoeg je moet nog doorsparen!");
-            alert("Je hebt nu: $" + this.m +" en de waarde is: $"+ this.l)
-            console.log(this.m)
+            alert("Je moet nog: $"+ money_need+" sparen.")
         }
 
 

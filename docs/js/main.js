@@ -55,16 +55,16 @@ var Coin = (function () {
     return Coin;
 }());
 var District = (function () {
-    function District(a, b, div_buy, div_district, p, l, m) {
+    function District(a, b, div_buy, div_district, p, l) {
         var _this = this;
         this.m = 0;
         this.l = 0;
         this.p = 0;
         this.district = div_district;
         this.forsale = div_buy;
-        this.m = m;
+        this.m = 1000;
         this.l = l;
-        this.p = p;
+        this.p = l;
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
@@ -85,7 +85,7 @@ var District = (function () {
     };
     District.prototype.landValue = function () {
         var landvalue = document.getElementById("landvalue");
-        landvalue.innerHTML = "Landwaarde: " + this.l;
+        landvalue.innerHTML = "Landwaarde: $" + this.l;
     };
     District.prototype.money = function () {
         var money = document.getElementById("money");
@@ -93,18 +93,21 @@ var District = (function () {
         console.log(this.m);
     };
     District.prototype.buy = function (e) {
-        console.log(this.m);
+        var _this = this;
+        alert("Deze district kost: $" + this.l);
+        var money_need = this.l - this.m;
         if (this.m > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
             this.forsale.remove();
             document.body.appendChild(this.district);
             this.m = this.m - this.l;
+            setInterval(function () { return _this.landValue(); }, 1500);
+            setInterval(function () { return _this.population(); }, 1500);
         }
         else {
             alert("Je hebt nog niet genoeg je moet nog doorsparen!");
-            alert("Je hebt nu: $" + this.m + " en de waarde is: $" + this.l);
-            console.log(this.m);
+            alert("Je moet nog: $" + money_need + " sparen.");
         }
     };
     ;
@@ -113,7 +116,7 @@ var District = (function () {
 var Factory = (function (_super) {
     __extends(Factory, _super);
     function Factory() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_4"), document.createElement("factory"), 10, 12, 3) || this;
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_4"), document.createElement("factory"), 750, 12) || this;
         console.log(_this.m);
         setInterval(function () { return _this.landValue(); }, 1500);
         setInterval(function () { return _this.population(); }, 1500);
@@ -139,9 +142,6 @@ var Game = (function () {
         var car_left = new Car(0, 0.51, document.createElement("car_left"));
         var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
         var recreation_district = new Recreation();
-        var shop_district = new Shop();
-        var factory_district = new Factory();
-        var living_district = new Living();
     };
     Game.prototype.Stats = function () {
         var money_balance = this.money;
@@ -151,7 +151,7 @@ var Game = (function () {
 var Living = (function (_super) {
     __extends(Living, _super);
     function Living() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_2"), document.createElement("living"), 10, 12, 4) || this;
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_2"), document.createElement("living"), 10, 12) || this;
         console.log(_this.m);
         setInterval(function () { return _this.landValue(); }, 1500);
         setInterval(function () { return _this.population(); }, 1500);
@@ -196,10 +196,8 @@ start.addEventListener("click", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 10, 12, 2) || this;
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 500, 800) || this;
         console.log(_this.m);
-        setInterval(function () { return _this.landValue(); }, 1500);
-        setInterval(function () { return _this.population(); }, 1500);
         setInterval(function () { return _this.money(); }, 1500);
         return _this;
     }
@@ -223,7 +221,7 @@ var Road = (function () {
 var Shop = (function (_super) {
     __extends(Shop, _super);
     function Shop() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_3"), document.createElement("shop"), 10, 12, 1) || this;
+        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_3"), document.createElement("shop"), 10, 12) || this;
         console.log(_this.m);
         setInterval(function () { return _this.landValue(); }, 1500);
         setInterval(function () { return _this.population(); }, 1500);
