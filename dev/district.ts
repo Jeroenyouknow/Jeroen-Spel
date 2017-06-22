@@ -18,6 +18,8 @@ class District {
         var y = b * window.innerHeight;
         this.move(x, y, div_buy, div_district);
         this.forsale.addEventListener("click", (e: MouseEvent) => this.buy(e));
+
+        setInterval( () => this.money(), 1000);
     }
 
     move(x: number, y: number, div: HTMLElement, div_district: HTMLElement) {
@@ -57,8 +59,8 @@ class District {
            this.forsale.remove();
             document.body.appendChild(this.district); 
             this.m = this.m - this.l;
-            setInterval( () => this.landValue(), 1500);
-            setInterval( () => this.population(), 1500);
+            setInterval( () => this.landValue(), 1000);
+            setInterval( () => this.population(), 1000);
         }
 
         else{

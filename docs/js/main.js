@@ -16,11 +16,11 @@ var Car = (function () {
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div);
+        this.pos(x, y, div);
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
-    Car.prototype.move = function (x, y, div) {
+    Car.prototype.pos = function (x, y, div) {
         x = x;
         y = y;
         div.style.left = x + "px";
@@ -70,6 +70,7 @@ var District = (function () {
         var y = b * window.innerHeight;
         this.move(x, y, div_buy, div_district);
         this.forsale.addEventListener("click", function (e) { return _this.buy(e); });
+        setInterval(function () { return _this.money(); }, 1000);
     }
     District.prototype.move = function (x, y, div, div_district) {
         x = x;
@@ -102,8 +103,8 @@ var District = (function () {
             this.forsale.remove();
             document.body.appendChild(this.district);
             this.m = this.m - this.l;
-            setInterval(function () { return _this.landValue(); }, 1500);
-            setInterval(function () { return _this.population(); }, 1500);
+            setInterval(function () { return _this.landValue(); }, 1000);
+            setInterval(function () { return _this.population(); }, 1000);
         }
         else {
             alert("Je hebt nog niet genoeg je moet nog doorsparen!");
@@ -135,16 +136,17 @@ var Game = (function () {
         this.methodes();
     }
     Game.prototype.Spawn = function () {
-        this.road.push(new Road(0, 0.5, document.createElement("road_turn")));
+        this.road.push(new Road(0, 0.45, document.createElement("road_turn")));
         this.road.push(new Road(0.5, 0, document.createElement("road")));
-        var car = new Car(0.55, 1, document.createElement("car"));
-        var car_return = new Car(0.51, 0, document.createElement("car_return"));
-        var car_right = new Car(1, 0.57, document.createElement("car_right"));
-        var car_left = new Car(0, 0.51, document.createElement("car_left"));
-        var stop_sign = new Sign(0.45, 0.38, document.createElement("stop_sign"));
+        var car_bottom = new Car(0.53555555, 1, document.createElement("car_bottom"));
+        var car_top = new Car(0.505, 0, document.createElement("car_top"));
+        var car_right = new Car(1, 0.56555555, document.createElement("car_right"));
+        var car_left = new Car(0, 0.50555555, document.createElement("car_left"));
         var recreation_district = new Recreation();
     };
     Game.prototype.methodes = function () {
+    };
+    Game.prototype.endGame = function () {
     };
     return Game;
 }());
@@ -188,9 +190,9 @@ start.addEventListener("click", function () {
         alert('Het spijt me maar Jeroen City is op dit nog niet beschikbaar op mobile devices. Probeer het via een Laptop of desktop nog een keer! ');
     }
     else {
-        alert("Welkom bij Jeroen City, Veel speel plezier!");
         start.remove();
         new Game();
+        alert("Welkom bij Jeroen City, Veel speel plezier!");
     }
 });
 var Recreation = (function (_super) {
@@ -223,30 +225,10 @@ var Shop = (function (_super) {
     function Shop() {
         var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_3"), document.createElement("shop"), 10, 12) || this;
         console.log(_this.m);
-        setInterval(function () { return _this.landValue(); }, 1500);
-        setInterval(function () { return _this.population(); }, 1500);
-        setInterval(function () { return _this.money(); }, 1500);
         return _this;
     }
     return Shop;
 }(District));
-var Sign = (function () {
-    function Sign(a, b, div) {
-        document.body.appendChild(div);
-        div.addEventListener("click", function () {
-        });
-        var x = a * window.innerWidth;
-        var y = b * window.innerHeight;
-        this.placing(x, y, div);
-    }
-    Sign.prototype.placing = function (x, y, div) {
-        x = x;
-        y = y;
-        div.style.left = x + "px";
-        div.style.top = y + "px";
-    };
-    return Sign;
-}());
 var Vehicle = (function () {
     function Vehicle(a, b, div, g) {
         this.color = Math.random() * 360;
@@ -256,7 +238,6 @@ var Vehicle = (function () {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
         this.move(x, y, div);
-        this.fuel(g);
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
@@ -265,9 +246,6 @@ var Vehicle = (function () {
         y = y;
         div.style.left = x + "px";
         div.style.top = y + "px";
-    };
-    Vehicle.prototype.fuel = function (g) {
-        console.log('Je heb top dit moment nog:', g, 'liter bezine');
     };
     return Vehicle;
 }());

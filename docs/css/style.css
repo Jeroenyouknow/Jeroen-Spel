@@ -56,24 +56,24 @@ button:active {
 }
 
 /*Style of the items placed in the game: Car,Coin,Road,Sign,District*/
-car {
+car_bottom {
     background-image: url(../images/car.png);
     width: 45px;
     height:90px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
-    animation: cardrive 10s linear infinite;
+    animation: cardrive_bottom 10s linear infinite;
 }
 
 
 
-car_return {
+car_top {
     background-image: url(../images/car_return.png);
     width: 45px;
     height: 90px;
     -webkit-filter: hue-rotate(90deg);
     filter: hue-rotate(90deg);
-    animation: cardrive_return 10s linear infinite;
+    animation: cardrive_top 10s linear infinite;
 }
 
 car_right {
@@ -150,7 +150,7 @@ end{
 
 
 /*Keyframes for the Cars*/
-  @keyframes cardrive {
+  @keyframes cardrive_bottom {
   0% {
       transform: translateY(10vh);
     }
@@ -160,7 +160,7 @@ end{
     }
   }
 
-@keyframes cardrive_return {
+@keyframes cardrive_top {
 0% {
     transform: translateY(-10vh);
   }

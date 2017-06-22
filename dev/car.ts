@@ -12,13 +12,13 @@ class Car {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
 
-        this.move(x, y, div);
+        this.pos(x, y, div);
 
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
 
-    move(x: number, y: number, div: HTMLElement) {
+    pos(x: number, y: number, div: HTMLElement) {
         x = x;
         y = y;
 

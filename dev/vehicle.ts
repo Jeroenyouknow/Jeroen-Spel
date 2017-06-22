@@ -13,7 +13,6 @@ class Vehicle {
         var y = b * window.innerHeight;
 
         this.move(x, y, div);
-        this.fuel(g);
 
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
@@ -25,9 +24,5 @@ class Vehicle {
 
         div.style.left = x + "px";
         div.style.top = y + "px";
-    }
-
-    fuel(g: number) {
-     console.log('Je heb top dit moment nog:',g,'liter bezine');
     }
 }
