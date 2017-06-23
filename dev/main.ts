@@ -31,10 +31,10 @@ start.addEventListener("click", function () {
     }
 
     else {
-        audio.pause();
         start.remove();
         new Game();
         alert("Welkom bij Jeroen City, Veel speel plezier!");
+        audio.pause();
     }
 
 });

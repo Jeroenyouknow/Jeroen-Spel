@@ -9,7 +9,6 @@ class Game {
         this.audio.play();
         this.audio.loop = true;
         this.Spawn();
-        this.methodes();
     }
 
     private Spawn() {
@@ -22,15 +21,8 @@ class Game {
         let recreation_District = new Recreation();
     }
 
-    private methodes() {
-        // let help = document.createElement("help");
-        // document.body.appendChild(help);
-        // let end = document.createElement("end");
-        // document.body.appendChild(end);
-    }
-
     private endGame(){
-        
+        // Coming here will i end the game 
     }
 }
 
