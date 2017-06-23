@@ -3,6 +3,7 @@ class District {
     protected m: number = 0;
     protected l: number = 0;
     protected p: number = 0;
+    protected status: boolean = false;
     private district: HTMLElement;
     private forsale: HTMLElement;
 
@@ -19,7 +20,7 @@ class District {
         this.move(x, y, div_buy, div_district);
         this.forsale.addEventListener("click", (e: MouseEvent) => this.buy(e));
 
-        setInterval( () => this.money(), 1000);
+        setInterval(() => this.money(), 1000);
     }
 
     move(x: number, y: number, div: HTMLElement, div_district: HTMLElement) {
@@ -47,25 +48,25 @@ class District {
     money() {
         let money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
-        console.log(this.m)
     }
 
-    buy(e:MouseEvent) {
-        alert("Deze district kost: $"+this.l);
+    buy(e: MouseEvent) {
+        alert("Deze district kost: $" + this.l);
         let money_need = this.l - this.m;
         if (this.m > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
-           this.forsale.remove();
-            document.body.appendChild(this.district); 
+            this.forsale.remove();
+            this.status = true;
+            document.body.appendChild(this.district);
             this.m = this.m - this.l;
-            setInterval( () => this.landValue(), 1000);
-            setInterval( () => this.population(), 1000);
+            setInterval(() => this.landValue(), 1000);
+            setInterval(() => this.population(), 1000);
         }
 
-        else{
+        else {
             alert("Je hebt nog niet genoeg je moet nog doorsparen!");
-            alert("Je moet nog: $"+ money_need+" sparen.")
+            alert("Je moet nog: $" + money_need + " sparen.")
         }
 
 

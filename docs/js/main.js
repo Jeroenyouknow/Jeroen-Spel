@@ -13,6 +13,8 @@ var Car = (function () {
         this.color = Math.random() * 360;
         document.body.appendChild(div);
         div.addEventListener("click", function () {
+            var audio = new Audio('audio/Car_horn.mp3');
+            audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
@@ -60,6 +62,7 @@ var District = (function () {
         this.m = 0;
         this.l = 0;
         this.p = 0;
+        this.status = false;
         this.district = div_district;
         this.forsale = div_buy;
         this.m = 1000;
@@ -91,7 +94,6 @@ var District = (function () {
     District.prototype.money = function () {
         var money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
-        console.log(this.m);
     };
     District.prototype.buy = function (e) {
         var _this = this;
@@ -101,6 +103,7 @@ var District = (function () {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
             this.forsale.remove();
+            this.status = true;
             document.body.appendChild(this.district);
             this.m = this.m - this.l;
             setInterval(function () { return _this.landValue(); }, 1000);
@@ -119,9 +122,6 @@ var Factory = (function (_super) {
     function Factory() {
         var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_4"), document.createElement("factory"), 750, 12) || this;
         console.log(_this.m);
-        setInterval(function () { return _this.landValue(); }, 1500);
-        setInterval(function () { return _this.population(); }, 1500);
-        setInterval(function () { return _this.money(); }, 1500);
         return _this;
     }
     return Factory;
@@ -131,18 +131,17 @@ var Game = (function () {
         this.audio = new Audio('audio/game_music.mp3');
         this.audio.play();
         this.audio.loop = true;
-        this.road = new Array();
         this.Spawn();
         this.methodes();
     }
     Game.prototype.Spawn = function () {
-        this.road.push(new Road(0, 0.45, document.createElement("road_turn")));
-        this.road.push(new Road(0.5, 0, document.createElement("road")));
-        var car_bottom = new Car(0.53555555, 1, document.createElement("car_bottom"));
-        var car_top = new Car(0.505, 0, document.createElement("car_top"));
-        var car_right = new Car(1, 0.56555555, document.createElement("car_right"));
-        var car_left = new Car(0, 0.50555555, document.createElement("car_left"));
-        var recreation_district = new Recreation();
+        var road_Horizontal = new Road(0, 0.45, document.createElement("road_turn"));
+        var road_Vertical = new Road(0.5, 0, document.createElement("road"));
+        var car_Bottom = new Car(0.535, 1, document.createElement("car_bottom"));
+        var car_Top = new Car(0.505, 0, document.createElement("car_top"));
+        var car_Right = new Car(1, 0.517, document.createElement("car_right"));
+        var car_Left = new Car(0, 0.458, document.createElement("car_left"));
+        var recreation_District = new Recreation();
     };
     Game.prototype.methodes = function () {
     };
@@ -155,9 +154,6 @@ var Living = (function (_super) {
     function Living() {
         var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_2"), document.createElement("living"), 10, 12) || this;
         console.log(_this.m);
-        setInterval(function () { return _this.landValue(); }, 1500);
-        setInterval(function () { return _this.population(); }, 1500);
-        setInterval(function () { return _this.money(); }, 1500);
         return _this;
     }
     return Living;
@@ -182,6 +178,9 @@ var isMobile = {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
 };
+var audio = new Audio('audio/main.mp3');
+audio.play();
+audio.loop = true;
 var start = document.createElement("button");
 document.body.appendChild(start);
 start.innerHTML = "Klik om het spel te starten!";
@@ -190,6 +189,7 @@ start.addEventListener("click", function () {
         alert('Het spijt me maar Jeroen City is op dit nog niet beschikbaar op mobile devices. Probeer het via een Laptop of desktop nog een keer! ');
     }
     else {
+        audio.pause();
         start.remove();
         new Game();
         alert("Welkom bij Jeroen City, Veel speel plezier!");
@@ -199,10 +199,19 @@ var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
         var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 500, 800) || this;
-        console.log(_this.m);
-        setInterval(function () { return _this.money(); }, 1500);
+        setInterval(function () { return _this.addMoney(); }, 2000);
+        var div = document.getElementById("recreation");
+        div.addEventListener("click", function () {
+            var audio = new Audio('audio/Car_horn.mp3');
+            audio.play();
+        });
         return _this;
     }
+    Recreation.prototype.addMoney = function () {
+        if (this.status === true) {
+            this.m = this.m + 100;
+        }
+    };
     return Recreation;
 }(District));
 var Road = (function () {
