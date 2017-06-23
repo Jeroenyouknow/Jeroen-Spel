@@ -13,16 +13,20 @@ With that you can buy your first district.
 
 Future updates:
 - End Screen
+- New sounds
+
+
+Updates (not planned):
 - Police Car 
 - Plane
 - Other three districts
-- New sounds
 - New sprites
-
-Updates (not planned):
 - New roads
 - New method to let the cars drive
 - Mobile version => now you wil get an alert
 
 
 Want to play the game? https://jeroenyouknow.github.io/Jeroen-Spel/
+
+# Dutch
+
