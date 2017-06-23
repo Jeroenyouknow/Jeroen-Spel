@@ -6,10 +6,12 @@ class District {
     protected status: boolean = false;
     protected district: HTMLElement;
     private forsale: HTMLElement;
+    private bonus: String;
 
-    constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number) {
+    constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number,bonus: String) {
         this.district = div_district;
         this.forsale = div_buy;
+        this.bonus = bonus;
         this.m = 1000;
         this.l = l;
         this.p = l;
@@ -61,6 +63,7 @@ class District {
         if (this.m > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
+            alert(this.bonus);
             this.forsale.remove();
             this.status = true;
             document.body.appendChild(this.district);

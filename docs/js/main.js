@@ -57,7 +57,7 @@ var Coin = (function () {
     return Coin;
 }());
 var District = (function () {
-    function District(a, b, c, d, div_buy, div_district, p, l) {
+    function District(a, b, c, d, div_buy, div_district, p, l, bonus) {
         var _this = this;
         this.m = 0;
         this.l = 0;
@@ -65,6 +65,7 @@ var District = (function () {
         this.status = false;
         this.district = div_district;
         this.forsale = div_buy;
+        this.bonus = bonus;
         this.m = 1000;
         this.l = l;
         this.p = l;
@@ -106,6 +107,7 @@ var District = (function () {
         if (this.m > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
+            alert(this.bonus);
             this.forsale.remove();
             this.status = true;
             document.body.appendChild(this.district);
@@ -202,8 +204,8 @@ start.addEventListener("click", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800) || this;
-        setInterval(function () { return _this.addMoney(); }, 2000);
+        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800, 'Met het Recreation District krijg je om de 5 secoden $100 inkomsten') || this;
+        setInterval(function () { return _this.addMoney(); }, 5000);
         _this.district.addEventListener("click", function () {
             var audio = new Audio('audio/recreation.mp3');
             audio.play();
