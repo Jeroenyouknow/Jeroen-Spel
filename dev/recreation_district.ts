@@ -1,11 +1,10 @@
 class Recreation extends District {
     constructor() {
-        super(0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 500, 800);
+        super(0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800);
         setInterval(() => this.addMoney(), 2000);
 
-        let div = document.getElementById("recreation");
-         div.addEventListener("click", function () {
-            let audio = new Audio('audio/Car_horn.mp3');
+        this.district.addEventListener("click", function () {
+            let audio = new Audio('audio/recreation.mp3');
             audio.play();
         });
     }

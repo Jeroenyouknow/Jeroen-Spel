@@ -57,7 +57,7 @@ var Coin = (function () {
     return Coin;
 }());
 var District = (function () {
-    function District(a, b, div_buy, div_district, p, l) {
+    function District(a, b, c, d, div_buy, div_district, p, l) {
         var _this = this;
         this.m = 0;
         this.l = 0;
@@ -71,17 +71,21 @@ var District = (function () {
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div_buy, div_district);
+        var x_d = c * window.innerWidth;
+        var y_d = d * window.innerHeight;
+        this.move(x, y, x_d, y_d, div_buy, div_district);
         this.forsale.addEventListener("click", function (e) { return _this.buy(e); });
         setInterval(function () { return _this.money(); }, 1000);
     }
-    District.prototype.move = function (x, y, div, div_district) {
+    District.prototype.move = function (x, y, x_d, y_d, div, div_district) {
         x = x;
         y = y;
         div.style.left = x + "px";
         div.style.top = y + "px";
-        div_district.style.left = x + "px";
-        div_district.style.top = y + "px";
+        x_d = x_d;
+        y_d = y_d;
+        div_district.style.left = x_d + "px";
+        div_district.style.top = y_d + "px";
     };
     District.prototype.population = function () {
         var population = document.getElementById("population");
@@ -137,9 +141,9 @@ var Game = (function () {
     Game.prototype.Spawn = function () {
         var road_Horizontal = new Road(0, 0.45, document.createElement("road_turn"));
         var road_Vertical = new Road(0.5, 0, document.createElement("road"));
-        var car_Bottom = new Car(0.535, 1, document.createElement("car_bottom"));
+        var car_Bottom = new Car(0.545, 1, document.createElement("car_bottom"));
         var car_Top = new Car(0.505, 0, document.createElement("car_top"));
-        var car_Right = new Car(1, 0.517, document.createElement("car_right"));
+        var car_Right = new Car(1, 0.53, document.createElement("car_right"));
         var car_Left = new Car(0, 0.458, document.createElement("car_left"));
         var recreation_District = new Recreation();
     };
@@ -198,11 +202,10 @@ start.addEventListener("click", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_1"), document.createElement("recreation"), 500, 800) || this;
+        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800) || this;
         setInterval(function () { return _this.addMoney(); }, 2000);
-        var div = document.getElementById("recreation");
-        div.addEventListener("click", function () {
-            var audio = new Audio('audio/Car_horn.mp3');
+        _this.district.addEventListener("click", function () {
+            var audio = new Audio('audio/recreation.mp3');
             audio.play();
         });
         return _this;

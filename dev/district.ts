@@ -4,10 +4,10 @@ class District {
     protected l: number = 0;
     protected p: number = 0;
     protected status: boolean = false;
-    private district: HTMLElement;
+    protected district: HTMLElement;
     private forsale: HTMLElement;
 
-    constructor(a: number, b: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number) {
+    constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number) {
         this.district = div_district;
         this.forsale = div_buy;
         this.m = 1000;
@@ -17,21 +17,26 @@ class District {
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div_buy, div_district);
+        var x_d = c * window.innerWidth;
+        var y_d = d * window.innerHeight;
+        this.move(x, y, x_d, y_d, div_buy, div_district);
         this.forsale.addEventListener("click", (e: MouseEvent) => this.buy(e));
 
         setInterval(() => this.money(), 1000);
     }
 
-    move(x: number, y: number, div: HTMLElement, div_district: HTMLElement) {
+    move(x: number, y: number, x_d: number, y_d: number, div: HTMLElement, div_district: HTMLElement) {
         x = x;
         y = y;
 
         div.style.left = x + "px";
         div.style.top = y + "px";
 
-        div_district.style.left = x + "px";
-        div_district.style.top = y + "px";
+        x_d = x_d;
+        y_d = y_d;
+
+        div_district.style.left = x_d + "px";
+        div_district.style.top = y_d + "px";
     }
 
     population() {
