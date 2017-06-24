@@ -19,6 +19,7 @@ var isMobile = {
     }
 };
 
+
 let audio = new Audio('audio/main.mp3');
 audio.play();
 audio.loop = true;
@@ -32,9 +33,14 @@ start.addEventListener("click", function () {
 
     else {
         start.remove();
-        new Game();
+         let game = new Game();
         alert("Welkom bij Jeroen City, Veel speel plezier!");
         audio.pause();
     }
 
 });
+
+
+
+
+

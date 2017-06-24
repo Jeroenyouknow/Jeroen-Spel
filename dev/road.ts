@@ -1,12 +1,15 @@
 class Road {
+public road: HTMLElement;
 
     constructor(a: number, b: number, div: HTMLElement) {
 
-        document.body.appendChild(div);
+         this.road = div;
+
+        document.body.appendChild(this.road);
 
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div);
+        this.move(x, y, this.road);
     }
 
     move(x: number, y: number, div: HTMLElement) {

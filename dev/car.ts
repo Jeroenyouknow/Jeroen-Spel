@@ -1,10 +1,12 @@
 class Car {
     private color: number;
+    public car: HTMLElement;
 
     constructor(a: number, b: number, div: HTMLElement) {
         this.color = Math.random() * 360;
+        this.car = div;
 
-        document.body.appendChild(div);
+        document.body.appendChild(this.car);
         div.addEventListener("click", function () {
             let audio = new Audio('audio/Car_horn.mp3');
             audio.play();
@@ -13,7 +15,7 @@ class Car {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
 
-        this.pos(x, y, div);
+        this.pos(x, y, this.car);
 
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";

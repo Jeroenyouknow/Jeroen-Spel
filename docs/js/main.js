@@ -11,14 +11,15 @@ var __extends = (this && this.__extends) || (function () {
 var Car = (function () {
     function Car(a, b, div) {
         this.color = Math.random() * 360;
-        document.body.appendChild(div);
+        this.car = div;
+        document.body.appendChild(this.car);
         div.addEventListener("click", function () {
             var audio = new Audio('audio/Car_horn.mp3');
             audio.play();
         });
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.pos(x, y, div);
+        this.pos(x, y, this.car);
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
@@ -76,7 +77,7 @@ var District = (function () {
         var y_d = d * window.innerHeight;
         this.move(x, y, x_d, y_d, div_buy, div_district);
         this.forsale.addEventListener("click", function (e) { return _this.buy(e); });
-        setInterval(function () { return _this.money(); }, 1000);
+        this.interval_district_money = setInterval(function () { return _this.money(); }, 1000);
     }
     District.prototype.move = function (x, y, x_d, y_d, div, div_district) {
         x = x;
@@ -123,47 +124,60 @@ var District = (function () {
     ;
     return District;
 }());
-var Factory = (function (_super) {
-    __extends(Factory, _super);
-    function Factory() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_4"), document.createElement("factory"), 750, 12) || this;
-        console.log(_this.m);
-        return _this;
-    }
-    return Factory;
-}(District));
 var Game = (function () {
     function Game() {
+        var _this = this;
         this.audio = new Audio('audio/game_music.mp3');
         this.audio.play();
         this.audio.loop = true;
+        this.r_Horizontal = new Road(0, 0.45, document.createElement("road_turn"));
+        this.r_Vertical = new Road(0.5, 0, document.createElement("road"));
+        this.c_Bottom = new Car(0.545, 1, document.createElement("car_bottom"));
+        this.c_Top = new Car(0.505, 0, document.createElement("car_top"));
+        this.c_Right = new Car(1, 0.53, document.createElement("car_right"));
+        this.c_Left = new Car(0, 0.458, document.createElement("car_left"));
+        this.recreation_district = new Recreation();
+        this.interval = setInterval(function () { return _this.endGame(); }, 2000);
         this.Spawn();
-        this.methodes();
     }
     Game.prototype.Spawn = function () {
-        var road_Horizontal = new Road(0, 0.45, document.createElement("road_turn"));
-        var road_Vertical = new Road(0.5, 0, document.createElement("road"));
-        var car_Bottom = new Car(0.545, 1, document.createElement("car_bottom"));
-        var car_Top = new Car(0.505, 0, document.createElement("car_top"));
-        var car_Right = new Car(1, 0.53, document.createElement("car_right"));
-        var car_Left = new Car(0, 0.458, document.createElement("car_left"));
-        var recreation_District = new Recreation();
-    };
-    Game.prototype.methodes = function () {
+        var road_Horizontal = this.r_Horizontal;
+        var road_Vertical = this.r_Vertical;
+        var car_Bottom = this.c_Bottom;
+        var car_Top = this.c_Top;
+        var car_Right = this.c_Right;
+        var car_Left = this.c_Left;
+        var recreation_District = this.recreation_district;
     };
     Game.prototype.endGame = function () {
+        if (this.recreation_district.m > 5000) {
+            this.audio.pause();
+            this.r_Horizontal.road.remove();
+            this.r_Vertical.road.remove();
+            this.c_Bottom.car.remove();
+            this.c_Top.car.remove();
+            this.c_Right.car.remove();
+            this.c_Left.car.remove();
+            this.recreation_district.district.remove();
+            clearInterval(this.interval);
+            clearInterval(this.recreation_district.interval_district_money);
+            this.r_Horizontal = undefined;
+            this.r_Vertical = undefined;
+            this.c_Bottom = undefined;
+            this.c_Top = undefined;
+            this.c_Right = undefined;
+            this.c_Left = undefined;
+            var audio_1 = new Audio('audio/main.mp3');
+            audio_1.play();
+            audio_1.loop = true;
+            var score = document.createElement("score");
+            document.body.appendChild(score);
+            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m + "<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "Bedankt voor het spelen!";
+            this.recreation_district = undefined;
+        }
     };
     return Game;
 }());
-var Living = (function (_super) {
-    __extends(Living, _super);
-    function Living() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_2"), document.createElement("living"), 10, 12) || this;
-        console.log(_this.m);
-        return _this;
-    }
-    return Living;
-}(District));
 var isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
@@ -195,16 +209,16 @@ start.addEventListener("click", function () {
         alert('Het spijt me maar Jeroen City is op dit nog niet beschikbaar op mobile devices. Probeer het via een Laptop of desktop nog een keer! ');
     }
     else {
-        audio.pause();
         start.remove();
-        new Game();
+        var game = new Game();
         alert("Welkom bij Jeroen City, Veel speel plezier!");
+        audio.pause();
     }
 });
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800, 'Met het Recreation District krijg je om de 5 secoden $100 inkomsten') || this;
+        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800, 'Met het Recreation District krijg je om de 5 secoden $500 inkomsten') || this;
         setInterval(function () { return _this.addMoney(); }, 5000);
         _this.district.addEventListener("click", function () {
             var audio = new Audio('audio/recreation.mp3');
@@ -214,17 +228,18 @@ var Recreation = (function (_super) {
     }
     Recreation.prototype.addMoney = function () {
         if (this.status === true) {
-            this.m = this.m + 100;
+            this.m = this.m + 500;
         }
     };
     return Recreation;
 }(District));
 var Road = (function () {
     function Road(a, b, div) {
-        document.body.appendChild(div);
+        this.road = div;
+        document.body.appendChild(this.road);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
-        this.move(x, y, div);
+        this.move(x, y, this.road);
     }
     Road.prototype.move = function (x, y, div) {
         x = x;
@@ -234,15 +249,6 @@ var Road = (function () {
     };
     return Road;
 }());
-var Shop = (function (_super) {
-    __extends(Shop, _super);
-    function Shop() {
-        var _this = _super.call(this, 0.58, 0.65, document.createElement("buy_3"), document.createElement("shop"), 10, 12) || this;
-        console.log(_this.m);
-        return _this;
-    }
-    return Shop;
-}(District));
 var Vehicle = (function () {
     function Vehicle(a, b, div, g) {
         this.color = Math.random() * 360;

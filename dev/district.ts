@@ -1,20 +1,23 @@
 class District {
 
-    protected m: number = 0;
-    protected l: number = 0;
-    protected p: number = 0;
+    public m: number = 0;
+    public l: number = 0;
+    public p: number = 0;
     protected status: boolean = false;
-    protected district: HTMLElement;
+    public district: HTMLElement;
     private forsale: HTMLElement;
     private bonus: String;
+    public interval_district_money: number;
+    
 
-    constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number,bonus: String) {
+    constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number, bonus: String) {
         this.district = div_district;
         this.forsale = div_buy;
         this.bonus = bonus;
         this.m = 1000;
         this.l = l;
         this.p = l;
+
 
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
@@ -24,7 +27,8 @@ class District {
         this.move(x, y, x_d, y_d, div_buy, div_district);
         this.forsale.addEventListener("click", (e: MouseEvent) => this.buy(e));
 
-        setInterval(() => this.money(), 1000);
+        this.interval_district_money = setInterval(() => this.money(), 1000);
+        
     }
 
     move(x: number, y: number, x_d: number, y_d: number, div: HTMLElement, div_district: HTMLElement) {
@@ -76,7 +80,5 @@ class District {
             alert("Je hebt nog niet genoeg je moet nog doorsparen!");
             alert("Je moet nog: $" + money_need + " sparen.")
         }
-
-
     };
 }
