@@ -24,7 +24,7 @@ class Game {
         this.c_Right = new Car(1, 0.53, document.createElement("car_right"));
         this.c_Left = new Car(0, 0.458, document.createElement("car_left"));
         this.recreation_district = new Recreation();
-        this.interval = setInterval(() => this.endGame(), 2000);
+        this.interval = setInterval(() => this.endGame(), 1000);
         this.Spawn();
     }
 
@@ -40,7 +40,7 @@ class Game {
 
     private endGame() {
         console.log(this.recreation_district.m)
-        if (this.recreation_district.m > 5000) {
+        if (this.recreation_district.m > 4999) {
             this.audio.pause();
             this.r_Horizontal.road.remove();
             this.r_Vertical.road.remove();
