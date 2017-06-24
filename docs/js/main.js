@@ -32,14 +32,18 @@ var Car = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
+    Object.defineProperty(Car.prototype, "getDiv", {
+        get: function () {
+            return this.car;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Car;
 }());
 var District = (function () {
     function District(a, b, c, d, div_buy, div_district, p, l, bonus) {
         var _this = this;
-        this.m = 0;
-        this.l = 0;
-        this.p = 0;
         this.status = false;
         this.district = div_district;
         this.forsale = div_buy;
@@ -56,6 +60,41 @@ var District = (function () {
         this.forsale.addEventListener("click", function (e) { return _this.buy(e); });
         this.interval_district_money = setInterval(function () { return _this.money(); }, 1000);
     }
+    Object.defineProperty(District.prototype, "setMoney", {
+        set: function (m) {
+            this.m = m;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(District.prototype, "getPopulation", {
+        get: function () {
+            return this.p;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(District.prototype, "getLandvalue", {
+        get: function () {
+            return this.l;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(District.prototype, "getDiv", {
+        get: function () {
+            return this.district;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(District.prototype, "getInterval", {
+        get: function () {
+            return this.interval_district_money;
+        },
+        enumerable: true,
+        configurable: true
+    });
     District.prototype.move = function (x, y, x_d, y_d, div, div_district) {
         x = x;
         y = y;
@@ -103,7 +142,6 @@ var District = (function () {
 }());
 var Game = (function () {
     function Game() {
-        var _this = this;
         this.audio = new Audio('audio/game_music.mp3');
         this.audio.play();
         this.audio.loop = true;
@@ -114,7 +152,6 @@ var Game = (function () {
         this.c_Right = new Car(1, 0.53, document.createElement("car_right"));
         this.c_Left = new Car(0, 0.458, document.createElement("car_left"));
         this.recreation_district = new Recreation();
-        this.interval = setInterval(function () { return _this.endGame(); }, 2000);
         this.Spawn();
     }
     Game.prototype.Spawn = function () {
@@ -127,17 +164,17 @@ var Game = (function () {
         var recreation_District = this.recreation_district;
     };
     Game.prototype.endGame = function () {
-        if (this.recreation_district.m > 5000) {
+        if (this.recreation_district.getMoney > 5000) {
             this.audio.pause();
-            this.r_Horizontal.road.remove();
-            this.r_Vertical.road.remove();
-            this.c_Bottom.car.remove();
-            this.c_Top.car.remove();
-            this.c_Right.car.remove();
-            this.c_Left.car.remove();
-            this.recreation_district.district.remove();
+            this.r_Horizontal.getDiv.remove();
+            this.r_Vertical.getDiv.remove();
+            this.c_Bottom.getDiv.remove();
+            this.c_Top.getDiv.remove();
+            this.c_Right.getDiv.remove();
+            this.c_Left.getDiv.remove();
+            this.recreation_district.getDiv.remove();
             clearInterval(this.interval);
-            clearInterval(this.recreation_district.interval_district_money);
+            clearInterval(this.recreation_district.getInterval);
             this.r_Horizontal = undefined;
             this.r_Vertical = undefined;
             this.c_Bottom = undefined;
@@ -149,7 +186,7 @@ var Game = (function () {
             audio_1.loop = true;
             var score = document.createElement("score");
             document.body.appendChild(score);
-            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m + "<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "<br>Bedankt voor het spelen!";
+            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.getMoney + "<br> Bewoners: " + this.recreation_district.getPopulation + "<br> Landwaarde: " + this.recreation_district.getLandvalue + "<br>Bedankt voor het spelen!";
             this.recreation_district = undefined;
         }
     };
@@ -207,9 +244,24 @@ var Recreation = (function (_super) {
         });
         return _this;
     }
+    Object.defineProperty(Recreation.prototype, "getMoney", {
+        get: function () {
+            console.log(this.m);
+            return this.m;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Recreation.prototype, "setMoney", {
+        set: function (m) {
+            this.m = m;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Recreation.prototype.addMoney = function () {
         if (this.status === true) {
-            this.m = this.m + 500;
+            this.m = this.m + 5000;
         }
     };
     return Recreation;
@@ -228,6 +280,13 @@ var Road = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
+    Object.defineProperty(Road.prototype, "getDiv", {
+        get: function () {
+            return this.road;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Road;
 }());
 //# sourceMappingURL=main.js.map
