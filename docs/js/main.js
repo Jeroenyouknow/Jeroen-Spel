@@ -172,7 +172,7 @@ var Game = (function () {
             audio_1.loop = true;
             var score = document.createElement("score");
             document.body.appendChild(score);
-            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m + "<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "Bedankt voor het spelen!";
+            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m + "<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "<br>Bedankt voor het spelen!";
             this.recreation_district = undefined;
         }
     };
