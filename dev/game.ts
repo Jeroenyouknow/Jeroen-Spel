@@ -39,6 +39,7 @@ class Game {
     }
 
     private endGame() {
+        console.log(this.recreation_district.m)
         if (this.recreation_district.m > 5000) {
             this.audio.pause();
             this.r_Horizontal.road.remove();

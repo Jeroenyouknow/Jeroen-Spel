@@ -1,13 +1,13 @@
 class District {
 
     protected status: boolean = false;
-    public district: HTMLElement;
+    protected district: HTMLElement;
     protected forsale: HTMLElement;
     protected bonus: String;
-    public m: number = 0;
-    public l: number = 0;
-    public p: number = 0;
-    public interval_district_money: number;
+    protected m: number = 0;
+    protected l: number = 0;
+    protected p: number = 0;
+    protected interval_district_money: number;
 
 
     constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number, bonus: String) {
@@ -16,7 +16,7 @@ class District {
         this.bonus = bonus;
         this.m = 1000;
         this.l = l;
-        this.p = l;
+        this.p = p;
 
 
         document.body.appendChild(div_buy);
@@ -27,7 +27,7 @@ class District {
         this.move(x, y, x_d, y_d, div_buy, div_district);
         this.forsale.addEventListener("click", (e: MouseEvent) => this.buy(e));
 
-        this.interval_district_money = setInterval(() => this.money(), 1000);
+        this.interval_district_money = setInterval(() => this.setMoney(), 1000);
 
     }
 
@@ -56,15 +56,16 @@ class District {
         landvalue.innerHTML = "Landwaarde: $" + this.l;
     }
 
-    private money() {
+    private setMoney() {
         let money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
+
     }
 
     private buy(e: MouseEvent) {
         alert("Deze district kost: $" + this.l);
         let money_need = this.l - this.m;
-        if (this.m > this.l) {
+        if (this.m + 1 > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
             alert(this.bonus);

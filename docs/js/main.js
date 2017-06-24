@@ -32,25 +32,21 @@ var Car = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
-    Object.defineProperty(Car.prototype, "getDiv", {
-        get: function () {
-            return this.car;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return Car;
 }());
 var District = (function () {
     function District(a, b, c, d, div_buy, div_district, p, l, bonus) {
         var _this = this;
         this.status = false;
+        this.m = 0;
+        this.l = 0;
+        this.p = 0;
         this.district = div_district;
         this.forsale = div_buy;
         this.bonus = bonus;
         this.m = 1000;
         this.l = l;
-        this.p = l;
+        this.p = p;
         document.body.appendChild(div_buy);
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
@@ -58,43 +54,8 @@ var District = (function () {
         var y_d = d * window.innerHeight;
         this.move(x, y, x_d, y_d, div_buy, div_district);
         this.forsale.addEventListener("click", function (e) { return _this.buy(e); });
-        this.interval_district_money = setInterval(function () { return _this.money(); }, 1000);
+        this.interval_district_money = setInterval(function () { return _this.setMoney(); }, 1000);
     }
-    Object.defineProperty(District.prototype, "setMoney", {
-        set: function (m) {
-            this.m = m;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(District.prototype, "getPopulation", {
-        get: function () {
-            return this.p;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(District.prototype, "getLandvalue", {
-        get: function () {
-            return this.l;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(District.prototype, "getDiv", {
-        get: function () {
-            return this.district;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(District.prototype, "getInterval", {
-        get: function () {
-            return this.interval_district_money;
-        },
-        enumerable: true,
-        configurable: true
-    });
     District.prototype.move = function (x, y, x_d, y_d, div, div_district) {
         x = x;
         y = y;
@@ -113,7 +74,7 @@ var District = (function () {
         var landvalue = document.getElementById("landvalue");
         landvalue.innerHTML = "Landwaarde: $" + this.l;
     };
-    District.prototype.money = function () {
+    District.prototype.setMoney = function () {
         var money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
     };
@@ -121,7 +82,7 @@ var District = (function () {
         var _this = this;
         alert("Deze district kost: $" + this.l);
         var money_need = this.l - this.m;
-        if (this.m > this.l) {
+        if (this.m + 1 > this.l) {
             alert("Gefeliciteerd je hebt genoeg geld om dit district te kopen!");
             alert("District aan het bouwen...");
             alert(this.bonus);
@@ -142,6 +103,7 @@ var District = (function () {
 }());
 var Game = (function () {
     function Game() {
+        var _this = this;
         this.audio = new Audio('audio/game_music.mp3');
         this.audio.play();
         this.audio.loop = true;
@@ -152,6 +114,7 @@ var Game = (function () {
         this.c_Right = new Car(1, 0.53, document.createElement("car_right"));
         this.c_Left = new Car(0, 0.458, document.createElement("car_left"));
         this.recreation_district = new Recreation();
+        this.interval = setInterval(function () { return _this.endGame(); }, 2000);
         this.Spawn();
     }
     Game.prototype.Spawn = function () {
@@ -164,17 +127,18 @@ var Game = (function () {
         var recreation_District = this.recreation_district;
     };
     Game.prototype.endGame = function () {
-        if (this.recreation_district.getMoney > 5000) {
+        console.log(this.recreation_district.m);
+        if (this.recreation_district.m > 5000) {
             this.audio.pause();
-            this.r_Horizontal.getDiv.remove();
-            this.r_Vertical.getDiv.remove();
-            this.c_Bottom.getDiv.remove();
-            this.c_Top.getDiv.remove();
-            this.c_Right.getDiv.remove();
-            this.c_Left.getDiv.remove();
-            this.recreation_district.getDiv.remove();
+            this.r_Horizontal.road.remove();
+            this.r_Vertical.road.remove();
+            this.c_Bottom.car.remove();
+            this.c_Top.car.remove();
+            this.c_Right.car.remove();
+            this.c_Left.car.remove();
+            this.recreation_district.district.remove();
             clearInterval(this.interval);
-            clearInterval(this.recreation_district.getInterval);
+            clearInterval(this.recreation_district.interval_district_money);
             this.r_Horizontal = undefined;
             this.r_Vertical = undefined;
             this.c_Bottom = undefined;
@@ -186,7 +150,7 @@ var Game = (function () {
             audio_1.loop = true;
             var score = document.createElement("score");
             document.body.appendChild(score);
-            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.getMoney + "<br> Bewoners: " + this.recreation_district.getPopulation + "<br> Landwaarde: " + this.recreation_district.getLandvalue + "<br>Bedankt voor het spelen!";
+            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m + "<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "<br>Bedankt voor het spelen!";
             this.recreation_district = undefined;
         }
     };
@@ -236,32 +200,29 @@ start.addEventListener("click", function () {
 var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
-        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 800, 'Met het Recreation District krijg je om de 5 secoden $500 inkomsten') || this;
-        setInterval(function () { return _this.addMoney(); }, 5000);
+        var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 1000, 'Met het Recreation District krijg je om de 7 secoden $500 inkomsten. Maar om de 5 seconden gaat er $10 landwaarde af.') || this;
+        setInterval(function () { return _this.addMoney(); }, 7000);
+        setInterval(function () { return _this.addPeople(); }, 500);
+        setInterval(function () { return _this.removeValue(); }, 5000);
         _this.district.addEventListener("click", function () {
             var audio = new Audio('audio/recreation.mp3');
             audio.play();
         });
         return _this;
     }
-    Object.defineProperty(Recreation.prototype, "getMoney", {
-        get: function () {
-            console.log(this.m);
-            return this.m;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Recreation.prototype, "setMoney", {
-        set: function (m) {
-            this.m = m;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Recreation.prototype.addMoney = function () {
         if (this.status === true) {
-            this.m = this.m + 5000;
+            this.m = this.m + 500;
+        }
+    };
+    Recreation.prototype.addPeople = function () {
+        if (this.status === true) {
+            this.p = this.p + 1;
+        }
+    };
+    Recreation.prototype.removeValue = function () {
+        if (this.status === true) {
+            this.l = this.l - 10;
         }
     };
     return Recreation;
@@ -280,13 +241,6 @@ var Road = (function () {
         div.style.left = x + "px";
         div.style.top = y + "px";
     };
-    Object.defineProperty(Road.prototype, "getDiv", {
-        get: function () {
-            return this.road;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return Road;
 }());
 //# sourceMappingURL=main.js.map

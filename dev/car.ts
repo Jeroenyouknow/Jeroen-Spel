@@ -1,6 +1,6 @@
 class Car {
     private color: number;
-    public car: HTMLElement;
+    private car: HTMLElement;
 
     constructor(a: number, b: number, div: HTMLElement) {
         this.color = Math.random() * 360;

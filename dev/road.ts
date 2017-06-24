@@ -1,5 +1,5 @@
 class Road {
-public road: HTMLElement;
+private road: HTMLElement;
 
     constructor(a: number, b: number, div: HTMLElement) {
 
