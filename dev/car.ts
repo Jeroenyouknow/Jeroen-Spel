@@ -16,7 +16,12 @@ class Car {
         var y = b * window.innerHeight;
 
         this.pos(x, y, this.car);
+        this.color_car(this.car)
 
+        
+    }
+
+    color_car(div: HTMLElement){
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
