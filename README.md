@@ -7,9 +7,12 @@ The game is a city game where you need to manage four districts.
 - Factory
 - Shop
 
-You need to collect money to buy the four districts.
-When you start the game you get an starting amount of $ 1000,-.
-With that you can buy your first district.
+1. You need to collect money to buy the four districts.
+2. When you start the game you get an starting amount of $ 1000,-.
+3. With that you can buy your first district.
+4. Then you need to collect $ 5000,-
+5. ???
+6. profit
 
 # Future updates:
 - End Screen
@@ -38,7 +41,7 @@ Want to play the game? https://jeroenyouknow.github.io/Jeroen-Spel/
 # Dutch
 
 # UML
-  https://www.dropbox.com/s/2w3kekp57rs2dbv/Screen%20Shot%202017-06-24%20at%2015.48.12.png?dl=0
+  https://1drv.ms/i/s!Ava1e9wOLZXU12nmOcGqarozWz2X
 
 # Instalatie
 
