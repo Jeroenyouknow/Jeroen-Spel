@@ -52,6 +52,9 @@ class Game {
 
             clearInterval(this.interval);
             clearInterval(this.recreation_district.interval_district_money);
+            clearInterval(this.recreation_district.interval_AddMoney);
+            clearInterval(this.recreation_district.interval_AddPeople);
+            clearInterval(this.recreation_district.interval_RemoveValue);
 
             this.r_Horizontal = undefined;
             this.r_Vertical = undefined;

@@ -139,6 +139,9 @@ var Game = (function () {
             this.recreation_district.district.remove();
             clearInterval(this.interval);
             clearInterval(this.recreation_district.interval_district_money);
+            clearInterval(this.recreation_district.interval_AddMoney);
+            clearInterval(this.recreation_district.interval_AddPeople);
+            clearInterval(this.recreation_district.interval_RemoveValue);
             this.r_Horizontal = undefined;
             this.r_Vertical = undefined;
             this.c_Bottom = undefined;
@@ -201,9 +204,9 @@ var Recreation = (function (_super) {
     __extends(Recreation, _super);
     function Recreation() {
         var _this = _super.call(this, 0.75, 0.65, 0.582, 0.595, document.createElement("buy_1"), document.createElement("recreation"), 500, 1000, 'Met het Recreation District krijg je om de 7 secoden $500 inkomsten. Maar om de 5 seconden gaat er $10 landwaarde af.') || this;
-        setInterval(function () { return _this.addMoney(); }, 7000);
-        setInterval(function () { return _this.addPeople(); }, 500);
-        setInterval(function () { return _this.removeValue(); }, 5000);
+        _this.interval_AddMoney = setInterval(function () { return _this.addMoney(); }, 7000);
+        _this.interval_AddPeople = setInterval(function () { return _this.addPeople(); }, 500);
+        _this.interval_RemoveValue = setInterval(function () { return _this.removeValue(); }, 5000);
         _this.district.addEventListener("click", function () {
             var audio = new Audio('audio/recreation.mp3');
             audio.play();
@@ -223,6 +226,9 @@ var Recreation = (function (_super) {
     Recreation.prototype.removeValue = function () {
         if (this.status === true) {
             this.l = this.l - 10;
+            if (this.l === 0) {
+                this.l = 0;
+            }
         }
     };
     return Recreation;
