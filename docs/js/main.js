@@ -211,7 +211,11 @@ start.addEventListener("click", function () {
     else {
         start.remove();
         var game = new Game();
-        alert("Welkom bij Jeroen City, Veel speel plezier!");
+        alert("Welkom bij Jeroen City eerst een kleine uitleg:");
+        alert(" - Je moet eerst een district kopen");
+        alert(" - Met een district verdien je geld");
+        alert(" - Als je meer dan $5000 hebt verdiend heb je het spel gehaald");
+        alert(" - Veel Speelplezier :)");
         audio.pause();
     }
 });
