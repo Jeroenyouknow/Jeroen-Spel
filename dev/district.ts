@@ -1,14 +1,14 @@
 class District {
 
+    protected status: boolean = false;
+    public district: HTMLElement;
+    protected forsale: HTMLElement;
+    protected bonus: String;
     public m: number = 0;
     public l: number = 0;
     public p: number = 0;
-    protected status: boolean = false;
-    public district: HTMLElement;
-    private forsale: HTMLElement;
-    private bonus: String;
     public interval_district_money: number;
-    
+
 
     constructor(a: number, b: number, c: number, d: number, div_buy: HTMLElement, div_district: HTMLElement, p: number, l: number, bonus: String) {
         this.district = div_district;
@@ -28,10 +28,10 @@ class District {
         this.forsale.addEventListener("click", (e: MouseEvent) => this.buy(e));
 
         this.interval_district_money = setInterval(() => this.money(), 1000);
-        
+
     }
 
-     private move(x: number, y: number, x_d: number, y_d: number, div: HTMLElement, div_district: HTMLElement) {
+    private move(x: number, y: number, x_d: number, y_d: number, div: HTMLElement, div_district: HTMLElement) {
         x = x;
         y = y;
 
@@ -45,23 +45,23 @@ class District {
         div_district.style.top = y_d + "px";
     }
 
-     private population() {
+    private population() {
         let population = document.getElementById("population");
         population.innerHTML = "Bewoners: " + this.p;
     }
 
 
-     private landValue() {
+    private landValue() {
         let landvalue = document.getElementById("landvalue");
         landvalue.innerHTML = "Landwaarde: $" + this.l;
     }
 
-     private money() {
+    private money() {
         let money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
     }
 
-     private buy(e: MouseEvent) {
+    private buy(e: MouseEvent) {
         alert("Deze district kost: $" + this.l);
         let money_need = this.l - this.m;
         if (this.m > this.l) {
