@@ -20,9 +20,12 @@ var Car = (function () {
         var x = a * window.innerWidth;
         var y = b * window.innerHeight;
         this.pos(x, y, this.car);
+        this.color_car(this.car);
+    }
+    Car.prototype.color_car = function (div) {
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
-    }
+    };
     Car.prototype.pos = function (x, y, div) {
         x = x;
         y = y;
@@ -30,32 +33,6 @@ var Car = (function () {
         div.style.top = y + "px";
     };
     return Car;
-}());
-var Coin = (function () {
-    function Coin(a, b, div, g, v) {
-        document.body.appendChild(div);
-        div.addEventListener("click", function () {
-        });
-        var x = a * window.innerWidth;
-        var y = b * window.innerHeight;
-        this.move(x, y, div);
-        this.addCoin(g, div, v);
-    }
-    Coin.prototype.move = function (x, y, div) {
-        x = x;
-        y = y;
-        div.style.left = x + "px";
-        div.style.top = y + "px";
-    };
-    Coin.prototype.addCoin = function (g, div, v) {
-        var coin = document.getElementById("coin_amount");
-        coin.innerHTML = "Je hebt $1000 coins op dit moment";
-        div.addEventListener("click", function () {
-            g = g + v;
-            coin.innerHTML = "Je hebt $" + g + " coins op dit moment";
-        });
-    };
-    return Coin;
 }());
 var District = (function () {
     function District(a, b, c, d, div_buy, div_district, p, l, bonus) {
@@ -252,25 +229,5 @@ var Road = (function () {
         div.style.top = y + "px";
     };
     return Road;
-}());
-var Vehicle = (function () {
-    function Vehicle(a, b, div, g) {
-        this.color = Math.random() * 360;
-        document.body.appendChild(div);
-        div.addEventListener("click", function () {
-        });
-        var x = a * window.innerWidth;
-        var y = b * window.innerHeight;
-        this.move(x, y, div);
-        div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
-        div.style.filter = "hue-rotate(" + this.color + "deg)";
-    }
-    Vehicle.prototype.move = function (x, y, div) {
-        x = x;
-        y = y;
-        div.style.left = x + "px";
-        div.style.top = y + "px";
-    };
-    return Vehicle;
 }());
 //# sourceMappingURL=main.js.map

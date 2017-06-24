@@ -31,7 +31,7 @@ class District {
         
     }
 
-    move(x: number, y: number, x_d: number, y_d: number, div: HTMLElement, div_district: HTMLElement) {
+     private move(x: number, y: number, x_d: number, y_d: number, div: HTMLElement, div_district: HTMLElement) {
         x = x;
         y = y;
 
@@ -45,23 +45,23 @@ class District {
         div_district.style.top = y_d + "px";
     }
 
-    population() {
+     private population() {
         let population = document.getElementById("population");
         population.innerHTML = "Bewoners: " + this.p;
     }
 
 
-    landValue() {
+     private landValue() {
         let landvalue = document.getElementById("landvalue");
         landvalue.innerHTML = "Landwaarde: $" + this.l;
     }
 
-    money() {
+     private money() {
         let money = document.getElementById("money");
         money.innerHTML = "Geld: $" + this.m;
     }
 
-    buy(e: MouseEvent) {
+     private buy(e: MouseEvent) {
         alert("Deze district kost: $" + this.l);
         let money_need = this.l - this.m;
         if (this.m > this.l) {

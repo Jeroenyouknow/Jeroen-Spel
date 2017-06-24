@@ -9,7 +9,7 @@ class Recreation extends District {
         });
     }
 
-    addMoney() {
+     public addMoney() {
         if (this.status === true) {
             this.m = this.m + 500;
         }

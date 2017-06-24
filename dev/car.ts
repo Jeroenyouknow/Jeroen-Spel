@@ -21,12 +21,12 @@ class Car {
         
     }
 
-    color_car(div: HTMLElement){
+    private color_car(div: HTMLElement){
         div.style.webkitFilter = "hue-rotate(" + this.color + "deg)";
         div.style.filter = "hue-rotate(" + this.color + "deg)";
     }
 
-    pos(x: number, y: number, div: HTMLElement) {
+     private pos(x: number, y: number, div: HTMLElement) {
         x = x;
         y = y;
 

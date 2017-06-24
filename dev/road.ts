@@ -12,7 +12,7 @@ public road: HTMLElement;
         this.move(x, y, this.road);
     }
 
-    move(x: number, y: number, div: HTMLElement) {
+     private move(x: number, y: number, div: HTMLElement) {
         x = x;
         y = y;
 
