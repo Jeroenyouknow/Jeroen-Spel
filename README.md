@@ -41,7 +41,7 @@ Want to play the game? https://jeroenyouknow.github.io/Jeroen-Spel/
 # Dutch
 
 # UML
-  https://1drv.ms/i/s!Ava1e9wOLZXU13zzpL7YVzy22GV_
+  https://drive.google.com/file/d/0B_6VYUoj_7sta0lOT2dTWHRNZG8/view?usp=sharing
 
 # Instalatie
 
