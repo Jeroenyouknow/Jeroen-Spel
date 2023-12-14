@@ -23,8 +23,8 @@ class Game {
         this.c_Top = new Car(0.505, 0, document.createElement("car_top"));
         this.c_Right = new Car(1, 0.53, document.createElement("car_right"));
         this.c_Left = new Car(0, 0.458, document.createElement("car_left"));
-        this.recreation_district = new Recreation();
-        this.interval = setInterval(() => this.endGame(), 1000);
+        // this.recreation_district = new Recreation();
+        // this.interval = setInterval(() => this.endGame(), 1000);
         this.Spawn();
     }
 
@@ -35,43 +35,43 @@ class Game {
         let car_Top = this.c_Top;
         let car_Right = this.c_Right;
         let car_Left = this.c_Left;
-        let recreation_District = this.recreation_district;
+        // let recreation_District = this.recreation_district;
     }
 
-    private endGame() {
-        console.log(this.recreation_district.m)
-        if (this.recreation_district.m > 4999) {
-            this.audio.pause();
-            this.r_Horizontal.road.remove();
-            this.r_Vertical.road.remove();
-            this.c_Bottom.car.remove();
-            this.c_Top.car.remove();
-            this.c_Right.car.remove();
-            this.c_Left.car.remove();
-            this.recreation_district.district.remove();
-
-            clearInterval(this.interval);
-            clearInterval(this.recreation_district.interval_district_money);
-            clearInterval(this.recreation_district.interval_AddMoney);
-            clearInterval(this.recreation_district.interval_AddPeople);
-            clearInterval(this.recreation_district.interval_RemoveValue);
-
-            this.r_Horizontal = undefined;
-            this.r_Vertical = undefined;
-            this.c_Bottom = undefined;
-            this.c_Top = undefined;
-            this.c_Right = undefined;
-            this.c_Left = undefined;
-          
-            let audio = new Audio('audio/main.mp3');
-            audio.play();
-            audio.loop = true;
-            let score = document.createElement("score");
-            document.body.appendChild(score);
-            score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m +"<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "<br>Bedankt voor het spelen!";
-
-              this.recreation_district = undefined;
-    }
+    // private endGame() {
+    //     console.log(this.recreation_district.m)
+    //     if (this.recreation_district.m > 4999) {
+    //         this.audio.pause();
+    //         this.r_Horizontal.road.remove();
+    //         this.r_Vertical.road.remove();
+    //         this.c_Bottom.car.remove();
+    //         this.c_Top.car.remove();
+    //         this.c_Right.car.remove();
+    //         this.c_Left.car.remove();
+    //         this.recreation_district.district.remove();
+    //
+    //         clearInterval(this.interval);
+    //         clearInterval(this.recreation_district.interval_district_money);
+    //         clearInterval(this.recreation_district.interval_AddMoney);
+    //         clearInterval(this.recreation_district.interval_AddPeople);
+    //         clearInterval(this.recreation_district.interval_RemoveValue);
+    //
+    //         this.r_Horizontal = undefined;
+    //         this.r_Vertical = undefined;
+    //         this.c_Bottom = undefined;
+    //         this.c_Top = undefined;
+    //         this.c_Right = undefined;
+    //         this.c_Left = undefined;
+    //
+    //         let audio = new Audio('audio/main.mp3');
+    //         audio.play();
+    //         audio.loop = true;
+    //         let score = document.createElement("score");
+    //         document.body.appendChild(score);
+    //         score.innerHTML = "Geweldig je hebt het spel gehaald je had de volgende score:<br> Geld: $" + this.recreation_district.m +"<br> Bewoners: " + this.recreation_district.p + "<br> Landwaarde: " + this.recreation_district.l + "<br>Bedankt voor het spelen!";
+    //
+    //           this.recreation_district = undefined;
+    // }
 }
 }
 
